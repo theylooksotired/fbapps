@@ -1,0 +1,80 @@
+.footer {
+    background: $colorMainAlt;
+    color: $white;
+    padding: 40px 10px;
+    @include clearer();
+    p {
+        padding: 0;
+        margin: 0;
+        padding-bottom: 1rem;
+    }
+    a {
+        color: $white;
+    }
+    .footerIns {
+        max-width: $sizeDesktop;
+        margin: auto;
+    }
+    .shareIcons {
+        float: left;
+        width: 4rem;
+    }
+    .pageSimple {
+        float: right;
+        width: 80%;
+    }
+    .footerLeft {
+        width: 58%;
+        float: left;
+        .shareIcons {
+            float: none;
+            padding: 0;
+            margin: 0 0 20px;
+        }
+    }
+    .footerRight {
+        width: 40%;
+        float: right;
+    }
+}
+.appButtons {
+    text-align: right;
+    p {
+        font-size: 0.8em;
+    }
+    .appButton {
+        width: 11rem;
+        display: inline-block;
+        margin-left: 1rem;
+        margin-bottom: 1rem;
+        a {
+            display: block;
+            background: $white;
+            color: $black;
+            padding: 1rem;
+            padding-left: 3rem;
+            font-size: 1.2rem;
+            font-weight: normal;
+            position: relative;
+            @include iconSingle('\e910', 2rem, $black);
+            @include animate();
+            @include borderRadius(5px);
+            &:before {
+                position: absolute;
+                left: 0.5rem;
+                top: 0.5rem;
+                @include animate();
+            }
+            &:hover {
+                background: $black;
+                color: $white;
+                &:before {
+                    color: $white;
+                }
+            }
+        }
+        &.appButtonGoogle a:before {
+            content: '\e911';
+        }
+    }
+}

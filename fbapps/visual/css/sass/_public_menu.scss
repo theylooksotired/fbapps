@@ -1,0 +1,40 @@
+.menuAll {
+    text-align: center;
+    background: $colorAccentAlt;
+    color: $white;
+    margin: auto;
+    width: $sizeDesktop;
+    ul {
+        width: 100%;
+        table-layout: fixed;
+        display: table;
+    }
+    li {
+        display: table-cell;
+        a {
+            border-right: 1px solid darken($colorAccentAlt, 10%);
+            color: $black;
+            font-weight: normal;
+            padding: 10px;
+            font-size: 1rem;
+            display: block;
+            &:hover{
+                background: $colorAccent;
+                color: $white;
+            }
+        }
+        &:last-child {
+            a {
+                border-right: 0;
+            }
+        }
+        &.selected {
+            a {
+                border-right: 0;
+                background: $white;
+                color: $colorMain;
+                font-weight: bold;
+            }
+        }
+    }
+}

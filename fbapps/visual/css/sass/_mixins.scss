@@ -1,0 +1,170 @@
+@mixin icon($content) {
+    font-family: 'icons';
+    content: $content;
+}
+
+@mixin iconSimple($content, $sizeContainer:2rem, $sizeFont:1rem, $colorIcon:$white) {
+    display: inline-block;
+    width: $sizeContainer;
+    height: $sizeContainer;
+    overflow: hidden;
+    text-indent: -5000rem;
+    position: relative;
+    &:before {
+        font-size: $sizeFont;
+        color: $colorIcon;
+        font-family: 'icons';
+        content: $content;
+        line-height: $sizeContainer;
+        text-indent: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        text-align: center;
+        display: inline-block;
+    }
+}
+
+@mixin iconSingle($content, $sizeFont:1rem, $colorIcon:$white) {
+    &:before {
+        font-size: $sizeFont;
+        color: $colorIcon;
+        font-family: 'icons';
+        content: $content;
+        line-height: $sizeFont;
+    }
+}
+
+@mixin iconAfter($content) {
+    &:after {
+        @include icon($content);
+    }
+}
+
+@mixin iconAfterAbsolute($content, $paddingRight: 1.2em, $top: 0, $right: 0) {
+    position: relative;
+    padding-right: $paddingRight;
+    &:after {
+        position: absolute;
+        top: $top;
+        right: $right;
+        @include icon($content);
+    }
+}
+
+@mixin iconBefore($content) {
+    &:before {
+        @include icon($content);
+    }
+}
+
+@mixin iconBeforeAbsolute($content, $paddingLeft: 1.2em, $top: 0, $left: 0) {
+    position: relative;
+    padding-left: $paddingLeft;
+    &:before {
+        position: absolute;
+        top: $top;
+        left: $left;
+        @include icon($content)
+    }
+}
+
+@mixin borderRadius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    border-radius: $radius;
+}
+
+@mixin simpleShadow() {
+    moz-box-shadow: 0px 0px 10px rgba($black, 0.3);
+    -webkit-box-shadow: 0px 0px 10px rgba($black, 0.3);
+    box-shadow: 0px 0px 10px rgba($black, 0.3);
+}
+
+@mixin darkShadow() {
+    moz-box-shadow: 0px 0px 5px rgba($black, 0.5);
+    -webkit-box-shadow: 0px 0px 5px rgba($black, 0.5);
+    box-shadow: 0px 0px 5px rgba($black, 0.5);
+}
+
+@mixin hideText() {
+    text-indent: -5000px;
+    text-align: left;
+    overflow: hidden;
+}
+
+@mixin textEllipsis() {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@mixin animate() {
+    -webkit-transition: 0.5s ease;
+    -moz-transition: 0.5s ease;
+    -ms-transition: 0.5s ease;
+    transition: 0.5s ease;
+}
+
+@mixin rotate($degrees) {
+    transform: rotate($degrees);
+    -webkit-transform: rotate($degrees);
+    -moz-transform: rotate($degrees);
+    -o-transform: rotate($degrees);
+    -ms-transform: rotate($degrees);
+}
+
+@mixin borderBox() {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+@mixin clearer() {
+    &:after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+}
+
+@mixin animateHoverOpacity() {
+    @include animate();
+    &:hover {
+        opacity: 0.5;
+    }
+}
+
+@mixin itemBottom($size, $borderStyle) {
+    margin-bottom: $size;
+    padding-bottom: $size;
+    border-bottom: $borderStyle;
+    &:last-child {
+        margin-bottom: 0;
+        padding-bottom: 0;
+        border-bottom: 0;
+    }
+}
+
+@mixin imageInside($size) {
+    height: $size;
+    position: relative;
+    overflow: hidden;
+    img {
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+    }
+}
+
+@mixin paragraphLines($numLines) {
+    line-height: 1.2rem;
+    height: $numLines * 1.2rem;
+    overflow: hidden;
+}

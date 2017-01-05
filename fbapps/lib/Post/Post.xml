@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<object>
+    <name>Post</name>
+    <info>
+        <sql>
+            <primary>idPost</primary>
+        </sql>
+        <form>
+            <title>posts</title>
+            <orderBy>publishDate DESC</orderBy>
+            <label>#title</label>
+            <pager>10</pager>
+            <viewPublic>true</viewPublic>
+            <publicUrl>@posts / #idPost _ #titleUrl</publicUrl>
+            <publicUrlList>@posts</publicUrlList>
+            <templateItemAdmin>
+                <div class="active active-##active">
+                    <p class="image">#image</p>
+                    <p class="accent"><strong>#title</strong></p>
+                    <p class="tiny"><span class="accent">#publishDate</span></p>
+                    <p class="tiny">#shortDescription</p>
+                </div>
+            </templateItemAdmin>
+            <multipleActions>
+                <action>delete</action>
+                <action>activate</action>
+                <action>deactivate</action>
+            </multipleActions>
+        </form>
+    </info>
+    <attributes>
+        <attribute>
+            <name>idPost</name>
+            <type>id-autoincrement</type>
+        </attribute>
+        <attribute>
+            <name>image</name>
+            <label>image</label>
+            <type>file</type>
+            <mode>image</mode>
+        </attribute>
+        <attribute>
+            <name>title</name>
+            <label>title</label>
+            <required>notEmpty</required>
+            <type>text-long</type>
+        </attribute>
+        <attribute>
+            <name>titleUrl</name>
+            <type>hidden-url</type>
+            <refAttribute>title</refAttribute>
+        </attribute>
+        <attribute>
+            <name>publishDate</name>
+            <label>publishDate</label>
+            <type>date-text</type>
+        </attribute>
+        <attribute>
+            <name>shortDescription</name>
+            <label>shortDescription</label>
+            <required>notEmpty</required>
+            <type>textarea</type>
+        </attribute>
+        <attribute>
+            <name>description</name>
+            <label>description</label>
+            <required>notEmpty</required>
+            <type>textarea-ck</type>
+        </attribute>
+    </attributes>
+    <indexes>
+        <index>
+            <name>titleUrl</name>
+            <fields>titleUrl</fields>
+        </index>
+        <index>
+            <name>search</name>
+            <fields>title,titleUrl,description</fields>
+            <type>FULLTEXT</type>
+        </index>
+    </indexes>
+</object>

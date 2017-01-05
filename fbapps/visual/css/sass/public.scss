@@ -1,0 +1,823 @@
+@import "_reset.scss";
+
+@import "_variables.scss";
+@import "_common.scss";
+@import "_mixins.scss";
+
+@import "_public_header.scss";
+@import "_public_menu.scss";
+@import "_public_footer.scss";
+@import "_public_sidebar.scss";
+
+html,
+body {
+	font-size: 1rem;
+	font-family: $fontFamily;
+	background: lighten($colorText, 70%);
+	color: $colorText;
+	background: url('../../img/background.jpg');
+}
+
+.shareIcons {
+	display: table;
+	table-layout: fixed;
+	float: right;
+	padding-top: 1rem;
+	.shareIcon {
+		display: table-cell;
+		a {
+			@include animateHoverOpacity();
+		}
+	}
+	.shareIconFacebook a {
+		background-color: $colorFacebook;
+		@include iconSimple("\e90b");
+	}
+	.shareIconTwitter a {
+		margin-left: 0.5rem;
+		background-color: $colorTwitter;
+		@include iconSimple("\e90c");
+	}
+}
+
+.contentFormatWrapper {
+	padding: 0 0 20px 0;
+}
+.contentFormat {
+	max-width: $sizeDesktop;
+	margin: auto;
+	@include clearer();
+	.contentFormatIns {	
+		padding: 20px;
+		background: $white;
+		@include clearer();
+	}
+	h1 {
+		font-size: 2rem;
+		color:$black;
+		margin: 0 0 15px 0;
+		font-weight: 300;
+	}
+	.contentLeft {
+		width: 64%;
+		float:right;
+	}
+	.contentRight {
+		width: 34%;
+		float:left;
+	}
+	.mainIntroLeft {
+		width: 50%;
+		float:left;
+	}
+	.mainIntroRight {
+		width: 20%;
+		float:right;
+	}
+}
+
+.pagerAll {
+	padding-bottom:1rem;
+	.pagerActive,
+	.pager {
+		display:inline-block;
+		margin-right:0.3rem;
+		a {
+			display:inline-block;
+			background:lighten($colorText, 70%);
+			font-weight:bold;
+			padding:0.5rem 1rem;
+			text-decoration:none;
+			text-align:center;
+			&:hover{
+				background:$colorText;
+				color:$white;
+			}
+		}
+	}
+	.pagerActive a {
+		background:$colorMain;
+		color:$white;
+		&::hover {
+			background:$colorMain;
+			color:$white;
+		}
+	}
+}
+
+.stars {
+	height: 1rem;
+	padding-bottom: 0.3rem;
+	.starFull,
+	.starEmpty {
+		margin-right: 0.3rem;
+	}
+	.starFull {
+		@include iconSimple('\e914', 1rem, 1rem, $colorAccentAlt);
+	}
+	.starEmpty {
+		@include iconSimple('\e912', 1rem, 1rem, $colorAccentAlt);
+	}
+}
+
+.itemPublic {
+	@include itemBottom(10px, 1px solid rgba($colorText, 0.2));
+	a {
+		display: block;
+		@include animateHoverOpacity();
+		@include clearer();
+	}
+	.itemPublicLeft {
+		width: 23%;
+		float: left;
+		.itemPublicImage {
+			@include imageInside(7rem);
+		}
+	}
+	.itemPublicRight {
+		width: 75%;
+		float: right;
+	}
+	h2 {
+		display: block;
+		padding-bottom: 0.3rem;
+		color: darken($colorText, 10%);
+	}
+	p {
+		font-size: 0.9rem;
+		color: $colorText;
+		font-weight: normal;
+		@include paragraphLines(3);
+	}
+	&.last {
+		margin-bottom: 0;
+		padding-bottom: 0;
+		border-bottom: 0;
+	}
+}
+
+.contentSimple {
+	margin: 0 -5px 0 -5px;
+	.listAll {
+		text-align: center;
+	}
+	.listAllRecipes {
+		text-align: left;
+		@include clearer();
+		a {
+			width: 230px;
+			float: left;
+			display: block;
+			padding: 0 30px 10px 5px;
+			font-weight: normal;
+			font-size: $fontSizeSmall;
+			@include textEllipsis();
+			&:hover {
+				color: $colorMain;
+			}
+		}
+	}
+	.adsense {
+		width: 100%;
+		text-align: center;
+		min-height: 100px;
+		margin: 0 auto 20px auto;
+		@include clearer();
+	}
+}
+.itemsAll,
+.searchRelated {
+	text-align: center;
+}
+.itemPublicSimple {
+	display: inline-block;
+	margin: 0 5px 10px 5px;
+	width: 107px;
+	height: 150px;
+	vertical-align: top;
+	a {
+		img {
+			width: 90px;
+			height: 90px;
+			border: 3px solid lighten($colorText, 50%);
+		}
+		p {
+			padding: 5px 0 0 0;
+			text-align: center;
+			font-weight: normal;
+			font-size: $fontSizeSmall;
+			color: $colorText;
+		}
+		&:visited {
+			p {
+				color: lighten($colorMain, 15%);
+			}
+		}
+		&:hover {
+			img {
+				opacity: 0.5;
+				border: 3px solid darken($colorMain, 30%);
+			}
+			p {
+				color: darken($colorMain, 30%);
+			}
+		}
+	}
+}
+.introTop {
+	text-align: center;
+	@include clearer();
+	.itemPublicSimple {
+		vertical-align: top;
+		margin: 0 1% 2% 1%;
+		width: 30%;
+		height: auto;
+		@include borderBox();
+		a {
+			.itemPublicSimpleImage {
+				background-position: center center;
+				background-size: cover;
+				background-repeat: no-repeat;
+				background-color: $colorMain;
+				height: 150px;
+				border: 3px solid lighten($colorText, 40%);
+				@include borderBox();
+			}
+			p {
+				padding: 10px 0 0 0;
+				font-weight: bold;
+				font-size: $fontSizeNormal;
+				color: $colorText;
+			}
+			&:hover {
+				.itemPublicSimpleImage {
+					opacity: 0.7;
+					border: 3px solid darken($colorMain, 30%);
+				}
+			}
+		}
+	}
+}
+.introBottom {
+	padding: 20px 0 0 0;
+	@include clearer();
+}
+
+.itemComplete {
+	.itemCompleteTop {
+		margin: auto;
+		padding: 0 0 15px 0;
+		&:after {
+			content: '';
+			display: table;
+			clear: both;
+		}
+	}
+	.itemCompleteTopItem {
+		float: left;
+		box-sizing: border-box;
+		margin: 0 2% 0 0;
+		&:last-child {
+			margin: 0;
+		}
+		img {
+			width: 100%;
+		}
+		&.itemCompleteTopImage {
+			width: 18%;
+		}
+		&.itemCompleteTopDescription {
+			font-size: 0.9rem;
+			width: 80%;
+			margin: 0;
+		}
+	}
+	.stars {
+		margin: auto;
+		padding: 5px 0 0 0;
+	}
+	p {
+		padding-bottom: 10px;
+	}
+	.itemCompleteBottom {
+		padding: 0 0 20px 0;
+		@include clearer();
+		h2 {
+			color: $colorText;
+			padding-bottom: 10px;
+			text-transform: uppercase;
+			font-weight: 300;
+			font-size: 1.2rem;
+			color: $black;
+		}
+		.itemCompleteBottomItem {
+			float: left;
+			width: 26%;
+			margin: 0 1% 0 0;
+			color: $colorText;
+			box-sizing: border-box;
+			ol {
+				margin: 0 0 0 20px;
+				padding: 0 0 0 10px;
+				li {
+					padding-bottom: 10px;
+					line-height: 1.3rem;
+				}
+			}
+			p {
+				line-height: 1.3rem;
+				padding-left: 1rem;
+			}
+			&.itemCompleteBottomAd {
+				width: 32%;
+			}
+			&.itemCompleteBottomIngredients {
+				width: 17%;
+				border-right: 1px solid rgba($black, 0.1);
+				font-size: $fontSizeSmall;
+			}
+			&.itemCompleteBottomPreparation {
+				width: 46%;
+				margin: 0;
+				font-size: $fontSizeSmall;
+			}
+		}
+	}
+	.ingredient {
+		font-style: italic;
+		color: $colorText;
+		padding: 0 10px 5px 10px;
+		line-height: 1.3rem;
+		font-weight: 300;
+	}
+	.itemCompleteImage {
+		max-height: 20rem;
+		overflow: hidden;
+		img {
+			padding-bottom: 0.5em;
+		}
+	}
+	&.itemCompletePost {
+		.itemCompleteImage {
+			float: left;
+			width: 35%;
+			margin: 0 1rem 1rem 0;
+		}
+		.pageComplete {
+			line-height: 1.5rem;
+			font-weight: 300;
+			em {
+				color: lighten($colorText, 10%);
+			}
+		}
+	}
+}
+
+.descriptionComplete,
+.introText {
+	padding: 10px 0;
+	font-size: 1rem;
+	line-height: 1.3rem;
+	color: $colorText;
+}
+.introText {
+	padding: 10px 0;
+	&.introTextComplete {
+		padding: 0;
+		text-align: left;
+	}
+}
+
+.relatedWrapper {
+	padding: 2rem 0;
+	margin: 2rem 0;
+	border-top: 5px solid lighten($colorText, 70%);
+	border-bottom: 5px solid lighten($colorText, 70%);
+	@include clearer;
+	.relatedLeft {
+		width: 29%;
+		float: right;
+		padding: 2%;
+		background: lighten(lighten($colorText, 70%), 5%);
+	}
+	.relatedRight {
+		width: 65%;
+		float: left;
+	}
+	.titleRelated {
+		font-weight: bold;
+		color: $colorText;
+		padding-bottom: 2rem;
+		font-size: 1.1rem;
+		text-transform: uppercase;
+	}
+}
+
+.shareOptions {
+	padding: 20px 0;
+	text-align: right;
+	.optionFacebook {
+		@include iconSingle('\e90b');
+		background: $colorFacebook;
+	}
+	.optionTwitter {
+		@include iconSingle('\e90c');
+		background: $colorTwitter;
+	}
+	.optionPrint {
+		@include iconSingle('\e900');
+	}
+	a {
+		display: inline-block;
+		margin: 0 0 10px 0;
+		padding: 10px 10px 10px 30px;
+		margin-right: 1rem;
+		font-weight: normal;
+		color: $white;
+		background: $colorText;
+		position: relative;
+		&:before {
+			position: absolute;
+			top: 0.5rem;
+			left: 0.5rem;
+		}
+		@include animateHoverOpacity();
+		@include borderRadius(3px);
+	}
+}
+
+.newsSide {
+	h2.titleNewsSide {
+		text-transform: uppercase;
+		font-weight: bold;
+		padding-bottom: 1rem;
+		a {
+			color: $colorText;
+		}
+	}
+}
+.itemSide {
+	margin-bottom: 1rem;
+	width: 48%;
+	float: left;
+	background: $colorText;
+	&:nth-child(even) {
+		float: left;
+	}
+	&:nth-child(odd) {
+		float: right;
+	}
+	a {
+		display: block;
+		@include animateHoverOpacity();
+	}
+	.itemSideIns {
+		position: relative;
+		.itemSideImage {
+			@include imageInside(6rem);
+			img {
+				min-height: 100%;
+			}
+		}
+		h2 {
+			font-size: 0.8rem;
+			padding: 0.3rem;
+			font-weight: normal;
+			color: $white;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			overflow: hidden;
+		}
+	}
+	&.itemSideRecipe {
+		width: 18%;
+		float: left;
+		margin: 1%;
+	}
+}
+.itemSimple {
+	margin-bottom: 1rem;
+	width: 49%;
+	margin-right: 2%;
+	float: left;
+	&:nth-child(2n) {
+		margin-right: 0;
+	}
+	a {
+		display: block;
+		border: 1px solid rgba($black, 0.2);
+		background: rgba($black, 0.05);
+		font-size: 0.9rem;
+		font-weight: bold;
+		padding: 1rem;
+		font-weight: normal;
+		color: rgba($black, 0.8);
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
+		@include animate();
+		@include borderRadius(3px);
+		&:hover {
+			background: $colorMain;
+			border: 1px solid rgba($colorMain, 0.5);
+			color: $white;
+		}
+	}
+}
+.listAllCategory {
+	@include itemBottom(2rem, 0.2rem solid lighten($colorText, 70%));
+	h2 {
+		a {
+			display: block;
+			font-weight: bold;
+			font-size: 1.5rem;
+			padding-bottom: 1rem;
+			color: $black;
+		}
+	}
+}
+
+.searchRelated {
+	padding-top: 1rem;
+	h2.searchRelatedTitle {
+		text-transform: uppercase;
+		color: $colorText;
+		font-weight: bold;
+		padding-bottom: 2rem;
+	}
+}
+.message {
+	margin: 1rem 0;
+	padding: 2rem;
+	text-align: center;
+	font-weight: bold;
+	color: $white;
+	background: $colorMainAlt;
+	p {
+		padding: 0;
+	}
+}
+
+.blockIntro {
+	padding: 1rem;
+	background: darken($white, 2%);
+	margin-bottom: 1rem;
+	h2.titleBlock {
+		font-weight: bold;
+		color: darken($colorText, 10%);
+		padding: 0 0 20px 0;
+		font-size: 1.2rem;
+		text-transform: uppercase;
+		a {
+			color: darken($colorText, 10%);
+		}
+	}
+}
+.related {
+	padding-top: 3rem;
+	h2.titleRelated {
+		font-weight: bold;
+		text-transform: uppercase;
+		color: $colorText;
+		padding-bottom: 1rem;
+		margin-bottom: 0.7rem;
+		border-bottom: 0.1rem solid lighten($colorText, 70%);
+	}
+	.relatedItems {
+		@include clearer();
+		.itemPublic {
+			width: 48%;
+			height: 120px;
+			float: left;
+			margin: 0 2% 2% 0;
+			border: 0;
+		}
+	}
+}
+.comments {
+	margin-top: 1rem;
+}
+
+.adsense {
+	text-align: center;
+	margin: 0 0 10px 0;
+	min-width: 340px;
+	min-height: 280px;
+	&.adsenseTest {
+		background: lighten($colorText, 70%);
+	}
+	&.adsenseTop {
+		width: 100%;
+		min-height: 100px;
+		margin: 0 auto 15px auto;
+	}
+	&.adsenseSimple {
+		width: 100%;
+		min-height: 100px;
+		margin: auto;
+	}
+	&.adsenseInline {
+		margin: 0 0 20px 0;
+	}
+}
+.adsenselinksWrapper {
+	margin: 10px 0;
+	@include clearer();
+	.adsenselinks {
+		float: left;
+		margin: 0 10px 0 0;
+		min-width: 180px;
+		min-height: 90px;
+		&:last-child {
+			margin: 0;
+		}
+	}
+}
+
+.listAll {
+	.adsenselinks {
+		min-width: 0;
+		min-height: 0;
+		width: 120px;
+		height: 150px;
+		display: inline-block;
+		float: none;
+		overflow: hidden;
+	}
+}
+.itemCompleteRecipe {
+	.adsenselinks {
+		min-width: 160px;
+	}
+}
+
+.itemIntro {
+	width: 33%;
+	height: 280px;
+	float: left;
+	cursor: pointer;
+	margin-right: 1%;
+	margin-bottom: 10px;
+	@include animateHoverOpacity();
+	&:last-child {
+		width: 340px;
+		float: right;
+		margin: 0;
+	}
+	.itemIntroIns {
+		position: relative;
+	}
+	.itemIntroIns {
+		height:280px;
+		background-position: center center;
+		background-size: cover;
+		background-repeat: no-repeat;
+	}
+	.itemIntroText {
+		padding: 0.7rem;
+		background: rgba($black, 0.8);
+		color:$white;
+		font-size: 0.9rem;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		a {
+			color:$white;
+			font-weight: normal;
+		}
+	}
+	.adsense {
+		margin: 0;
+	}
+}
+
+.postIntro {
+	width: 48%;
+	padding-bottom: 2rem;
+	&:nth-child(even) {
+		float: left;
+	}
+	&:nth-child(odd) {
+		float: right;
+	}
+	a {
+		display: block;
+		@include animateHoverOpacity();
+	}
+	h2 {
+		padding-bottom: 0.3rem;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+	.postIntroLeft {
+		float: left;
+		width: 30%;
+	}
+	.postIntroRight {
+		float: right;
+		width: 68%;
+		font-size: 0.9rem;
+		font-weight: normal;
+		color: $colorText;
+		@include paragraphLines(4);
+		em {
+			font-style: italic;
+		}
+	}
+	.postIntroImage {
+		@include imageInside(5rem);
+	}
+}
+
+.itemCompletePost {
+	.postTop {
+		@include clearer();
+		.postTopLeft {
+			width: 28%;
+			float: left;
+			img {
+				width: 100%;
+			}
+		}
+		.postTopRight {
+			width: 70%;
+			float: right;
+		}
+	}
+}
+
+.relatedPost {
+	margin: 20px 0 0 0;
+	padding: 20px 0 0 0;
+	border-top: 2px solid rgba($colorText, 0.5);
+	> h2 {
+		font-weight: bold;
+		font-size: $fontSizeBig;
+		text-transform: uppercase;
+		padding: 0 0 20px 0;
+	}
+}
+
+.btnBig {
+	a {
+		display: block;
+		max-width: 20rem;
+		padding: 1rem;
+		background: $colorMain;
+		color: $white;
+		font-size: 1rem;
+		text-transform: uppercase;
+		text-align: center;
+		margin: 1rem auto;
+		@include borderRadius(0.2rem);
+		@include animateHoverOpacity;
+	}
+}
+
+.itemSimpleLink {
+	padding-bottom: 1rem;
+	a {
+		color: $colorText;
+		font-weight: normal;
+		display: block;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		@include animate();
+		@include iconSingle('\e908', 1rem, rgba($colorText, 0.5));
+		p {
+			display: inline;
+		}
+		em {
+			display: block;
+			padding: 2px 0 0 25px;
+			font-size: $fontSizeSmall;
+			color: rgba($colorText, 0.5);
+		}
+		&:hover {
+			color: $colorMain;
+		}
+		&:before {
+			margin-right: 0.5rem;
+		}
+	}
+}
+
+.breadcrumbs {
+	font-size: 0.8rem;
+	padding-bottom: 10px;
+	color: lighten($colorText, 70%);
+	a {
+		display: inline-block;
+		font-weight: normal;
+		font-style: italic;
+		color: $colorText;
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+}
+
+@import "_public_responsive.scss";
