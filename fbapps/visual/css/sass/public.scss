@@ -9,12 +9,164 @@
 @import "_public_footer.scss";
 @import "_public_sidebar.scss";
 
+$colorAccent: #00AB83;
+$colorAccentAlt: #CBE67C;
+
 html,
 body {
 	font-size: 1rem;
 	font-family: $fontFamily;
-	background: lighten($colorText, 70%);
+	background: $colorAccent;
 	color: $colorText;
+}
+
+.contact {
+	header {
+		@include clearer();
+		background: $colorAccentAlt;
+		border-bottom: 5px solid darken($colorAccentAlt, 10%);
+		color: $colorText;
+		padding: 10px;
+		a {
+			color: $colorText;
+		}
+		.headerIns {
+			font-size: $fontSizeSmall;
+			max-width: $sizeTablet;
+			margin: auto;
+		}
+		.logo {
+			width: 30%;
+			float: left;
+			text-align: left;
+			img {
+				max-width: 100%;
+			}
+		}
+		.headerInfo {
+			width: 65%;
+			float: right;
+			text-align: right;
+		}
+	}
+	footer {
+		border-top: 10px solid rgba($colorAccent, 0.5);
+		background: rgba($colorAccent, 0.9);
+		color: $white;
+		padding: 50px 10px;
+		a {
+			color: $white;
+		}
+		.footerIns {
+			font-size: $fontSizeSmall;
+			max-width: $sizeTablet;
+			margin: auto;
+		}
+	}
+}
+
+.message {
+	margin: 50px 0;
+	padding: 30px;
+	background: $colorAccent;
+	border: 2px solid darken($colorAccent, 10%);
+	color: $white;
+	text-align: center;
+	font-weight: bold;
+}
+
+section {
+	max-width: $sizeTablet;
+	margin: auto;
+	margin: 20px auto;
+	padding: 20px;
+	background: rgba($white, 0.9);
+	border: 3px solid rgba($colorAccentAlt, 0.2);
+	@include borderBox();
+	h1 {
+		font-size: $fontSizeBig;
+		color: $colorAccent;
+		font-weight: bold;
+		margin: 0 0 15px 0;
+		padding: 0 0 15px 0;
+		border-bottom: 5px solid rgba($colorAccentAlt, 0.5);
+	}
+	.formContact {
+		.formField {
+			margin: 0 0 20px 0;
+			label {
+				display: block;
+				font-size: $fontSizeSmall;
+				color: $colorAccent;
+				text-transform: uppercase;
+				padding: 0 0 5px 0;
+				font-weight: bold;
+			}
+			input,
+			select,
+			textarea {
+				display: block;
+				padding: 5px;
+				border: 1px solid darken($white, 30%);
+				background: $white;
+				font-family: $fontFamily;
+				width: 100%;
+				@include borderRadius(3px);
+			}
+			&.error {
+				input,
+				select,
+				textarea {
+					border: 1px solid $colorError;
+				}
+			}
+		}
+		.error {
+			font-size: $fontSizeTiny;
+			font-weight: bold;
+			display: block;
+			padding: 0 0 3px 0;
+			color: $colorError;
+		}
+		input.formSubmit {
+			width: 200px;
+			display: block;
+			margin: auto;
+			background: darken($colorAccent, 5%);
+			color: $white;
+			padding: 10px;
+			text-align: center;
+			font-family: $fontFamily;
+			font-weight: bold;
+			text-transform: uppercase;
+			border: 0;
+			@include borderRadius(3px);
+			&:hover {
+				background: darken($colorAccent, 10%);
+			}
+		}
+		.formFields {
+			@include clearer();
+			&.formFields2 {
+				.formField {
+					width: 50%;
+					float: left;
+					padding-right: 20px;
+					@include borderBox();
+					@include clearer();
+					&:last-child {
+						padding-right: 0;
+					}
+				}
+			}
+		}
+	}
+}
+
+.contact-plasticwebs {
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
 }
 
 

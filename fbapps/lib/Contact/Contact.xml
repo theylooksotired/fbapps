@@ -21,7 +21,7 @@
 			<orderBy>created DESC</orderBy>
 			<templateItemAdmin>
                 <p class="accent"><strong>#name</strong></p>
-                <p class="tiny">#shortDescription</p>
+                <p class="tiny">#email</p>
             </templateItemAdmin>
 		</form>
 	</info>
@@ -31,9 +31,19 @@
             <type>id-autoincrement</type>
         </attribute>
         <attribute>
+            <name>idClient</name>
+            <type>select</type>
+            <refObject>Client</refObject>
+        </attribute>
+        <attribute>
             <name>name</name>
             <label>namePerson</label>
             <required>notEmpty</required>
+            <type>text-long</type>
+        </attribute>
+        <attribute>
+            <name>lastName</name>
+            <label>lastName</label>
             <type>text-long</type>
         </attribute>
         <attribute>
@@ -45,6 +55,11 @@
         <attribute>
             <name>telephone</name>
             <label>telephone</label>
+            <type>text-long</type>
+        </attribute>
+        <attribute>
+            <name>typeMessage</name>
+            <label>typeMessage</label>
             <type>text-long</type>
         </attribute>
         <attribute>

@@ -23,6 +23,9 @@ class Navigation_Ui extends Ui {
 						</div>
 						'.$this->footer();
 			break;
+			case 'clean':
+				return $content;
+			break;
 		}
 	}
 
