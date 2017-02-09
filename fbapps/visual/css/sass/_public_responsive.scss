@@ -1,11 +1,191 @@
-@media screen and (max-width: $sizeDesktop - 1) {
+@media screen and (max-width: $sizeDesktop) {
+	.bodySite {
+		.services .serviceRight,
+		.services .serviceLeft,
+		.team .teamRight,
+		.team .teamLeft,
+		.contact .contactRight,
+		.contact .contactLeft {
+		    float: none;
+		    width: 100%;
+		    border: 0;
+		    padding: 0;
+		    margin: 0 0 30px 0;
+		    &:last-child {
+		    	margin: 0;
+		    }
+		}
+		.contact .contactLeft {
+			text-align: center;
+		}
+		.menu {
+			margin-left: 10px;
+			.menuItem {
+				margin-right: 10px;
+				&:last-child {
+					margin-right: 0;
+				}
+				a {
+					display: block;
+					padding: 5px 10px;
+				}
+			}
+		}
+		.shareIcons {
+			padding-left: 0;
+			margin-left: 0;
+			border: 0;
+		}
+		.pageTitle {
+		    margin: auto auto 40px;
+		}
+		.pages .apps .app {
+		    width: 50%;
+		}
+	}
+	.contact {
+		header .headerIns,
+		footer .footerIns,
+		section {
+			max-width: 80%;
+		}
+	}
 }
 
-@media screen and (max-width: $sizeTablet - 1) {
+@media screen and (max-width: $sizeTablet) {
+	.bodySite {
+		.header {
+			padding: 0;
+			margin: 0;
+			height: auto;
+			.headerIns {
+				display: table;
+				width: 100%;
+			}
+			.headerLeft,
+			.headerRight {
+				float: none;
+				width: auto;
+				display: table-cell;
+				padding: 5px;
+				vertical-align: middle;
+			}
+			.headerRight {
+				text-align: right;
+			}
+			.logo {
+				display: none;
+			}
+		}
+		.menu {
+			margin: 0;
+			.menuItem {
+				font-size: 0.85rem;
+				margin: 0 10px 0 0;
+				padding: 0;
+				&:last-child {
+					margin: 0;
+				}
+			}
+		}
+		.langs {
+			margin: 0;
+			float: right;
+			.lang {
+				float: right;
+				margin: 0;
+			}
+		}
+		.shareIcons {
+			display: none;
+		}
+		.bannerText p,
+		.pageTitle h3 {
+			padding: 10px 5px;
+			border: 3px solid $colorAccent;
+			font-size: $fontSizeBig;
+		}
+		.bannerText strong,
+		.pageTitle h3 span {
+			padding: 5px 15px;
+		}
+		.pageComplete ol, .pageComplete ul, .pageComplete dl {
+		    margin-left: 10px;
+		    padding: 0 10px;
+		}
+		.sites .site {
+		    width: 50%;
+		    .siteIns {
+				margin: 5px;
+			}
+			.siteImage {
+				height: 100px;
+			}
+		}
+		.pages .page {
+			padding-top: 80px;
+			padding-bottom: 80px;
+		}
+		.pages .apps .app {
+		    width: 100%;
+		    float: none;
+		}
+	}
+	.pageHowToUse {
+		strong {
+			font-size: $fontSizeBig;
+			padding: 15px 0 0 0;
+			margin: 30px 0 0 0;
+			&:before {
+				height: 3px;
+			}
+		}
+	}
+	.pagePersonalization {
+		.pageIns {
+			font-size: $fontSizeNormal;
+			p {
+				line-height: 1.2em;
+			}
+		}
+	}
+	.contact {
+		header .headerIns,
+		footer .footerIns,
+		section {
+			max-width: 90%;
+		}
+		section .formContact .formFields {
+			&.formFields2 {
+				.formField {
+					float: none;
+				    padding-right: 0;
+				    width: 100%;
+				}
+			}
+		}
+		header {
+			border: 0;
+			background: rgba($colorAccentAlt, 0.8);
+			.headerInfo {
+				display: none;
+			}
+			.logo {
+				float: none;
+				width: 100%;
+				max-width: 130px;
+				margin: auto;
+			}
+		}
+		footer {
+			border: 0;
+			background: rgba($colorAccent, 0.7);
+		}
+	}
 }
 
-@media screen and (max-width: $sizeMobile - 1) {
-}
-
-@media print {
+@media screen and (max-width: $sizeMobile) {
+	.bodySite .sites .site {
+	    width: 100%;
+	}
 }

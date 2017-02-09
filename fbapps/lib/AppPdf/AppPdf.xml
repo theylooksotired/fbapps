@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+* @structure AppPdf
+*
+* @author Leano Martinet <info@asterion-cms.com>
+* @package Asterion
+* @version 3.0.1
+-->
+<object>
+    <name>AppPdf</name>
+    <info>
+        <sql>
+            <primary>idAppPdf</primary>
+        </sql>
+        <form>
+            <title>pdfs</title>
+            <orderBy>title</orderBy>
+            <label>#title</label>
+            <templateItemAdmin>
+                <p class="accent"><strong>#title</strong></p>
+            </templateItemAdmin>
+        </form>
+    </info>
+    <attributes>
+        <attribute>
+            <name>idAppPdf</name>
+            <type>id-autoincrement</type>
+        </attribute>
+        <attribute>
+            <name>idCustomer</name>
+            <type>hidden</type>
+        </attribute>
+        <attribute>
+            <name>title</name>
+            <label>title</label>
+            <required>notEmpty</required>
+            <type>text</type>
+        </attribute>
+        <attribute>
+            <name>pdf</name>
+            <label>pdf</label>
+            <type>file</type>
+        </attribute>
+    </attributes>
+</object>

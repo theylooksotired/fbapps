@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<object>
+    <name>App</name>
+    <info>
+        <sql>
+            <primary>idApp</primary>
+            <order>true</order>
+        </sql>
+        <form>
+            <title>apps</title>
+            <orderBy>ord</orderBy>
+            <label>#title</label>
+            <publicUrl>@aplicaciones / #idApp _ #titleUrl</publicUrl>
+            <publicUrlList>@aplicaciones</publicUrlList>
+            <templateItemAdmin>
+                <p class="image">#image</p>
+                <p class="accent"><strong>#title</strong></p>
+                <p class="tiny">#link</p>
+                <p class="tiny">#description</p>
+            </templateItemAdmin>
+        </form>
+    </info>
+    <attributes>
+        <attribute>
+            <name>idApp</name>
+            <type>id-autoincrement</type>
+        </attribute>
+        <attribute>
+            <name>image</name>
+            <label>image</label>
+            <type>file</type>
+            <mode>image</mode>
+        </attribute>
+        <attribute>
+            <name>title</name>
+            <label>title</label>
+            <required>notEmpty</required>
+            <type>text-long</type>
+        </attribute>
+        <attribute>
+            <name>titleUrl</name>
+            <type>hidden-url</type>
+            <refAttribute>title</refAttribute>
+        </attribute>
+        <attribute>
+            <name>objectName</name>
+            <label>objectName</label>
+            <type>text-long</type>
+        </attribute>
+        <attribute>
+            <name>appId</name>
+            <label>appId</label>
+            <type>text-long</type>
+        </attribute>
+        <attribute>
+            <name>appUrl</name>
+            <label>appUrl</label>
+            <type>text-long</type>
+        </attribute>
+        <attribute>
+            <name>description</name>
+            <label>description</label>
+            <lang>true</lang>
+            <type>textarea</type>
+        </attribute>
+        <attribute>
+            <name>active</name>
+            <label>active</label>
+            <type>checkbox</type>
+        </attribute>
+    </attributes>
+</object>

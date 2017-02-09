@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+* @structure AppHtmlContent
+*
+* @author Leano Martinet <info@asterion-cms.com>
+* @package Asterion
+* @version 3.0.1
+-->
+<object>
+    <name>AppHtmlContent</name>
+    <info>
+        <sql>
+            <primary>idAppHtmlContent</primary>
+        </sql>
+        <form>
+            <title>htmlContent</title>
+            <orderBy>title</orderBy>
+            <label>#title</label>
+            <templateItemAdmin>
+                <p class="accent"><strong>#title</strong></p>
+            </templateItemAdmin>
+        </form>
+    </info>
+    <attributes>
+        <attribute>
+            <name>idAppHtmlContent</name>
+            <type>id-autoincrement</type>
+        </attribute>
+        <attribute>
+            <name>idCustomer</name>
+            <type>hidden</type>
+        </attribute>
+        <attribute>
+            <name>title</name>
+            <label>title</label>
+            <required>notEmpty</required>
+            <type>text</type>
+        </attribute>
+        <attribute>
+            <name>content</name>
+            <label>content</label>
+            <required>notEmpty</required>
+            <type>textarea-ck</type>
+        </attribute>
+    </attributes>
+</object>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+* @structure CustomerPage
+*
+* @author Leano Martinet <info@asterion-cms.com>
+* @package Asterion
+* @version 3.0.1
+-->
+<object>
+    <name>CustomerPage</name>
+    <info>
+        <sql>
+            <primary>idCustomerPage</primary>
+            <created>true</created>
+            <modified>true</modified>
+        </sql>
+        <form>
+            <hiddenAdminMenu>true</hiddenAdminMenu>
+        </form>
+    </info>
+    <attributes>
+        <attribute>
+            <name>idCustomerPage</name>
+            <type>id-autoincrement</type>
+        </attribute>
+        <attribute>
+            <name>idCustomer</name>
+            <type>linkid-autoincrement</type>
+        </attribute>
+        <attribute>
+            <name>pageId</name>
+            <label>pageId</label>
+            <required>notEmpty</required>
+            <type>text-long</type>
+        </attribute>
+        <attribute>
+            <name>name</name>
+            <label>name</label>
+            <required>notEmpty</required>
+            <type>text-long</type>
+        </attribute>
+        <attribute>
+            <name>active</name>
+            <label>active</label>
+            <type>checkbox</type>
+        </attribute>
+    </attributes>
+</object>

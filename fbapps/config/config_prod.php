@@ -15,7 +15,7 @@
 * The TITLE constant defines the title of the page.
 * After the installation it is preferable to use the "title" parameter.
 */
-define('TITLE', 'Recetas de cocina boliviana');
+define('TITLE', 'Facebook apps - Plasticwebs');
 
 /**
 * The following constants define the paths to the different
@@ -23,8 +23,8 @@ define('TITLE', 'Recetas de cocina boliviana');
 * The most important ones are LOCAL_URL and LOCAL_FILE
 * that must point to the public and private files of the website.
 */
-define('SERVER_URL', 'http://www.cocina-boliviana.com');
-define('BASE_STRING','/');
+define('SERVER_URL', 'https://www.plasticwebs.com');
+define('BASE_STRING','/fbapps/');
 define('LOCAL_URL', SERVER_URL.BASE_STRING);
 define('LOCAL_FILE', $_SERVER['DOCUMENT_ROOT'].BASE_STRING);
 define('BASE_URL', LOCAL_URL.APP_FOLDER.'/');
@@ -41,7 +41,7 @@ define('DATA_LOCAL_FILE', BASE_FILE.'data/');
 * It it used to show error messages or build the database automatically.
 * When in production it must be set to false.
 */
-define('DEBUG', true);
+define('DEBUG', false);
 
 /**
 * The LANGUAGES constant defines the languages of the website.
@@ -53,7 +53,7 @@ define('LANGS', 'es');
 /**
 * The system starts a session with a proper name for the website.
 */
-define('SESSION_NAME', 'recipes_bol');
+define('SESSION_NAME', 'fbapps');
 session_start(SESSION_NAME);
 
 /**
@@ -91,12 +91,12 @@ $_ENV['locations'][] = FRAMEWORK_FILE.'admin/';
 */
 define('DB_USE', true);
 define('DB_SERVER', 'localhost');
-define('DB_USER', 'cocina_cocina7');
+define('DB_USER', 'plasticwebs_fbapps');
 define('DB_PASSWORD', 'directorio123');
 define('DB_PORT', '3306');
-define('DB_NAME', 'cocina_cocina7');
+define('DB_NAME', 'plasticwebs_fbapps');
 define('DB_TYPE', 'mysql');
-define('DB_PREFIX', 'rec_');
+define('DB_PREFIX', 'fbapps_');
 define("PDO_DSN","mysql:host=".DB_SERVER.";port=".DB_PORT.";dbname=".DB_NAME);
 
 /**
@@ -108,7 +108,7 @@ define('LOGO', BASE_URL.'visual/img/logo.jpg');
 * The following values tell Asterion what sizes of images it should store.
 */
 define('SAVE_IMAGE_ORIGINAL', false);
-define('SAVE_IMAGE_HUGE', false);
+define('SAVE_IMAGE_HUGE', true);
 define('SAVE_IMAGE_WEB', true);
 define('SAVE_IMAGE_SMALL', true);
 define('SAVE_IMAGE_THUMB', false);
@@ -132,7 +132,7 @@ define('WIDTH_SQUARE', 100);
 * The EMAIL constant defines the main email for the website.
 * After the installation it is preferable to use the "email" parameter.
 */
-define('EMAIL', 'info@cocina-boliviana.com');
+define('EMAIL', 'info@plasticwebs.com');
 
 /**
 * Asterion defines UTF8 for the internal encoding of the website.

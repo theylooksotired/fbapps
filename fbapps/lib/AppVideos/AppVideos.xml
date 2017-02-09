@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+* @structure AppVideos
+*
+* @author Leano Martinet <info@asterion-cms.com>
+* @package Asterion
+* @version 3.0.1
+-->
+<object>
+    <name>AppVideos</name>
+    <info>
+        <sql>
+            <primary>idAppVideos</primary>
+        </sql>
+        <form>
+            <title>videos</title>
+            <orderBy>title</orderBy>
+            <label>#title</label>
+            <templateItemAdmin>
+                <p class="accent"><strong>#title</strong></p>
+            </templateItemAdmin>
+        </form>
+    </info>
+    <attributes>
+        <attribute>
+            <name>idAppVideos</name>
+            <type>id-autoincrement</type>
+        </attribute>
+        <attribute>
+            <name>idCustomer</name>
+            <type>hidden</type>
+        </attribute>
+        <attribute>
+            <name>title</name>
+            <label>title</label>
+            <required>notEmpty</required>
+            <type>text</type>
+        </attribute>
+        <attribute>
+            <name>video</name>
+            <label>video</label>
+            <required>notEmpty</required>
+            <placeholder>videoPlaceholder</placeholder>
+            <type>text</type>
+        </attribute>
+        <attribute>
+            <name>titleVideoExtra1</name>
+            <label>titleVideoExtra1</label>
+            <type>text</type>
+        </attribute>
+        <attribute>
+            <name>videoExtra1</name>
+            <label>videoExtra1</label>
+            <placeholder>videoPlaceholder</placeholder>
+            <type>text</type>
+        </attribute>
+        <attribute>
+            <name>titleVideoExtra2</name>
+            <label>titleVideoExtra2</label>
+            <type>text</type>
+        </attribute>
+        <attribute>
+            <name>videoExtra2</name>
+            <label>videoExtra2</label>
+            <placeholder>videoPlaceholder</placeholder>
+            <type>text</type>
+        </attribute>
+        <attribute>
+            <name>titleVideoExtra3</name>
+            <label>titleVideoExtra3</label>
+            <type>text</type>
+        </attribute>
+        <attribute>
+            <name>videoExtra3</name>
+            <label>videoExtra3</label>
+            <placeholder>videoPlaceholder</placeholder>
+            <type>text</type>
+        </attribute>
+        <attribute>
+            <name>titleVideoExtra4</name>
+            <label>titleVideoExtra4</label>
+            <type>text</type>
+        </attribute>
+        <attribute>
+            <name>videoExtra4</name>
+            <label>videoExtra4</label>
+            <placeholder>videoPlaceholder</placeholder>
+            <type>text</type>
+        </attribute>
+    </attributes>
+</object>

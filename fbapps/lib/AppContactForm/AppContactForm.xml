@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+* @structure AppContactForm
+*
+* @author Leano Martinet <info@asterion-cms.com>
+* @package Asterion
+* @version 3.0.1
+-->
+<object>
+	<name>AppContactForm</name>
+	<info>
+		<sql>
+			<primary>idAppContactForm</primary>
+			<created>true</created>
+			<modified>true</modified>
+		</sql>
+		<form>
+			<title>clients</title>
+			<orderBy>code</orderBy>
+            <label>#name</label>
+			<templateItemAdmin>
+                <p class="accent"><strong>#name</strong></p>
+                <p class="tiny">#code</p>
+            </templateItemAdmin>
+		</form>
+	</info>
+	<attributes>
+		<attribute>
+            <name>idAppContactForm</name>
+            <type>id-autoincrement</type>
+        </attribute>
+        <attribute>
+            <name>idCustomer</name>
+            <type>hidden</type>
+        </attribute>
+        <attribute>
+            <name>imageLogo</name>
+            <label>imageLogo</label>
+            <type>file</type>
+            <layout>image</layout>
+        </attribute>
+        <attribute>
+            <name>linkWeb</name>
+            <label>linkWeb</label>
+            <type>text-long</type>
+        </attribute>
+        <attribute>
+            <name>titleMessage</name>
+            <label>titleMessage</label>
+            <type>text-long</type>
+        </attribute>
+        <attribute>
+            <name>typeMessage</name>
+            <label>typeMessageComma</label>
+            <placeholder>typeMessageCommaHelp</placeholder>
+            <type>text-long</type>
+        </attribute>
+        <attribute>
+            <name>emailContact</name>
+            <label>emailContact</label>
+            <required>email</required>
+            <type>text-long</type>
+        </attribute>
+        <attribute>
+            <name>messageThanks</name>
+            <label>messageThanks</label>
+            <type>text-long</type>
+        </attribute>
+        <attribute>
+            <name>header</name>
+            <label>header</label>
+            <type>textarea</type>
+        </attribute>
+        <attribute>
+            <name>footer</name>
+            <label>footer</label>
+            <type>textarea</type>
+        </attribute>
+        <attribute>
+            <name>colorBackground</name>
+            <label>colorBackground</label>
+            <type>color</type>
+        </attribute>
+        <attribute>
+            <name>colorBackgroundHeader</name>
+            <label>colorBackgroundHeader</label>
+            <type>color</type>
+        </attribute>
+        <attribute>
+            <name>colorBackgroundFooter</name>
+            <label>colorBackgroundFooter</label>
+            <type>color</type>
+        </attribute>
+        <attribute>
+            <name>colorText</name>
+            <label>colorText</label>
+            <type>color</type>
+        </attribute>
+        <attribute>
+            <name>colorTextHeader</name>
+            <label>colorTextHeader</label>
+            <type>color</type>
+        </attribute>
+        <attribute>
+            <name>colorTextFooter</name>
+            <label>colorTextFooter</label>
+            <type>color</type>
+        </attribute>
+        <attribute>
+            <name>imageBackground</name>
+            <label>imageBackground</label>
+            <type>file</type>
+            <layout>image</layout>
+        </attribute>
+	</attributes>
+</object>

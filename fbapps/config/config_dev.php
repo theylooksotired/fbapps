@@ -108,7 +108,7 @@ define('LOGO', BASE_URL.'visual/img/logo.jpg');
 * The following values tell Asterion what sizes of images it should store.
 */
 define('SAVE_IMAGE_ORIGINAL', false);
-define('SAVE_IMAGE_HUGE', false);
+define('SAVE_IMAGE_HUGE', true);
 define('SAVE_IMAGE_WEB', true);
 define('SAVE_IMAGE_SMALL', true);
 define('SAVE_IMAGE_THUMB', false);

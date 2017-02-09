@@ -9,26 +9,26 @@
 @import "_public_footer.scss";
 @import "_public_sidebar.scss";
 
-$colorAccent: #00AB83;
-$colorAccentAlt: #CBE67C;
-
 html,
 body {
 	font-size: 1rem;
 	font-family: $fontFamily;
-	background: $colorAccent;
-	color: $colorText;
+}
+
+.anchor {
+	position:relative;
+	top:-150px;
 }
 
 .contact {
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
 	header {
 		@include clearer();
-		background: $colorAccentAlt;
-		border-bottom: 5px solid darken($colorAccentAlt, 10%);
-		color: $colorText;
 		padding: 10px;
 		a {
-			color: $colorText;
+			color: inherit;
 		}
 		.headerIns {
 			font-size: $fontSizeSmall;
@@ -41,6 +41,7 @@ body {
 			text-align: left;
 			img {
 				max-width: 100%;
+				max-height: 50px;
 			}
 		}
 		.headerInfo {
@@ -50,112 +51,102 @@ body {
 		}
 	}
 	footer {
-		border-top: 10px solid rgba($colorAccent, 0.5);
-		background: rgba($colorAccent, 0.9);
-		color: $white;
-		padding: 50px 10px;
+		padding: 30px 10px;
 		a {
-			color: $white;
+			color: inherit;
 		}
 		.footerIns {
-			font-size: $fontSizeSmall;
+			font-size: $fontSizeTiny;
+			text-align: center;
 			max-width: $sizeTablet;
 			margin: auto;
 		}
 	}
-}
-
-.message {
-	margin: 50px 0;
-	padding: 30px;
-	background: $colorAccent;
-	border: 2px solid darken($colorAccent, 10%);
-	color: $white;
-	text-align: center;
-	font-weight: bold;
-}
-
-section {
-	max-width: $sizeTablet;
-	margin: auto;
-	margin: 20px auto;
-	padding: 20px;
-	background: rgba($white, 0.9);
-	border: 3px solid rgba($colorAccentAlt, 0.2);
-	@include borderBox();
-	h1 {
-		font-size: $fontSizeBig;
-		color: $colorAccent;
+	.message {
+		margin: 50px 0;
+		padding: 30px;
+		text-align: center;
 		font-weight: bold;
-		margin: 0 0 15px 0;
-		padding: 0 0 15px 0;
-		border-bottom: 5px solid rgba($colorAccentAlt, 0.5);
 	}
-	.formContact {
-		.formField {
-			margin: 0 0 20px 0;
-			label {
-				display: block;
-				font-size: $fontSizeSmall;
-				color: $colorAccent;
-				text-transform: uppercase;
-				padding: 0 0 5px 0;
-				font-weight: bold;
-			}
-			input,
-			select,
-			textarea {
-				display: block;
-				padding: 5px;
-				border: 1px solid darken($white, 30%);
-				background: $white;
-				font-family: $fontFamily;
-				width: 100%;
-				@include borderRadius(3px);
-			}
-			&.error {
+
+	section {
+		max-width: $sizeTablet;
+		margin: auto;
+		margin: 20px auto;
+		padding: 20px;
+		background: rgba($white, 0.9);
+		border: 3px solid rgba($black, 0.1);
+		@include borderBox();
+		h1 {
+			font-size: $fontSizeBig;
+			font-weight: bold;
+			margin: 0 0 15px 0;
+			padding: 0 0 15px 0;
+		}
+		.formContact {
+			.formField {
+				margin: 0 0 20px 0;
+				label {
+					display: block;
+					font-size: $fontSizeSmall;
+					text-transform: uppercase;
+					padding: 0 0 5px 0;
+					font-weight: bold;
+				}
 				input,
 				select,
 				textarea {
-					border: 1px solid $colorError;
+					display: block;
+					padding: 5px;
+					border: 1px solid darken($white, 30%);
+					background: $white;
+					font-family: $fontFamily;
+					width: 100%;
+					@include borderRadius(3px);
+				}
+				&.error {
+					input,
+					select,
+					textarea {
+						border: 1px solid $colorError;
+					}
 				}
 			}
-		}
-		.error {
-			font-size: $fontSizeTiny;
-			font-weight: bold;
-			display: block;
-			padding: 0 0 3px 0;
-			color: $colorError;
-		}
-		input.formSubmit {
-			width: 200px;
-			display: block;
-			margin: auto;
-			background: darken($colorAccent, 5%);
-			color: $white;
-			padding: 10px;
-			text-align: center;
-			font-family: $fontFamily;
-			font-weight: bold;
-			text-transform: uppercase;
-			border: 0;
-			@include borderRadius(3px);
-			&:hover {
-				background: darken($colorAccent, 10%);
+			.error {
+				font-size: $fontSizeTiny;
+				font-weight: bold;
+				display: block;
+				padding: 0 0 3px 0;
+				color: $colorError;
 			}
-		}
-		.formFields {
-			@include clearer();
-			&.formFields2 {
-				.formField {
-					width: 50%;
-					float: left;
-					padding-right: 20px;
-					@include borderBox();
-					@include clearer();
-					&:last-child {
-						padding-right: 0;
+			input.formSubmit {
+				width: 200px;
+				display: block;
+				margin: auto;
+				padding: 10px;
+				text-align: center;
+				font-family: $fontFamily;
+				font-weight: bold;
+				text-transform: uppercase;
+				border: 0;
+				cursor: pointer;
+				@include borderRadius(3px);
+				&:hover {
+					opacity: 0.8;
+				}
+			}
+			.formFields {
+				@include clearer();
+				&.formFields2 {
+					.formField {
+						width: 50%;
+						float: left;
+						padding-right: 20px;
+						@include borderBox();
+						@include clearer();
+						&:last-child {
+							padding-right: 0;
+						}
 					}
 				}
 			}
@@ -163,11 +154,581 @@ section {
 	}
 }
 
-.contact-plasticwebs {
-	background-size: cover;
-	background-position: center center;
-	background-repeat: no-repeat;
+.imagePoster {
+	text-align: center;
+	img {
+		display: block;
+		margin: auto;
+		max-width: 100%;
+	}
 }
 
+
+.contentAdmin {
+	padding: 0 0 20px 0;
+	.contentAdminIns {
+		a {
+			display: block;
+			max-width: $sizeTablet;
+			margin: auto;
+			padding: 20px;
+			background: $white;
+			border: 2px solid $colorAccent;
+			color: $colorAccent;
+			text-align: center;
+			font-weight: normal;
+			@include borderBox();
+			&:hover {
+				background: rgba($colorAccent, 0.1);
+			}
+		}
+	}
+}
+
+.footerPlastic {
+	background: darken($white, 5%);
+	color: $colorText;
+	font-size: $fontSizeSmall;
+	.footerPlasticIns {
+		max-width: $sizeTablet;
+		padding: 20px 0;
+		margin: auto;
+		text-align: center;
+		@include borderBox();
+		p {
+			padding: 5px 0;
+		}
+		a {
+			color: $colorAccent;
+		}
+	}
+}
+
+.bodySite {
+	background: lighten($colorAccentAlt, 10%);
+	&.bodySiteIntro {
+		background: $white;
+		.contentFormat {
+			padding: 0;
+			.content {
+				max-width: 100%;
+			}
+		}
+	}
+	.header {
+		background: $colorAccent;
+		padding: 5px 20px;
+		height: 40px;
+		position: fixed;
+		top: 0px;
+		left: 0px;
+		right: 0px;
+		z-index: 9999;
+		border-bottom: 1px solid $colorText;
+		-moz-box-shadow: 0px 0px 4px $colorText;
+		-webkit-box-shadow: 0px 0px 4px $colorText;
+		box-shadow: 0px 0px 4px $colorText;
+		@include clearer();
+		.headerIns {
+			max-width: $sizeDesktop;
+			margin: auto;
+		}
+		.logo {
+			width:38px;
+			float: left;
+			a {
+				height: 40px;
+				width:38px;
+				display: block;
+				background: url(../../img/logoTop.jpg) no-repeat center center;
+				text-indent: -5000px;
+			}
+		}
+		.headerLeft {
+			width: 70%;
+			float: left;
+		}
+		.headerRight {
+			width: 30%;
+			float: right;
+		}
+	}
+	.shareIcons {
+		float: right;
+		padding-left: 20px;
+		margin-left: 25px;
+		border-left: 1px solid $colorMain;
+		margin-top: 5px;
+		@include clearer();
+		.shareIcon {
+			width:30px;
+			float: right;
+			margin-left: 5px;
+		}
+		.shareIcon a {
+			display: block;
+			width: 30px;
+			height: 30px;
+			background: url(../../img/icoFacebook.png) no-repeat center center;
+			text-indent: -5000px;
+			overflow: hidden;
+		}
+		.shareIconTwitter a {
+			background: url(../../img/icoTwitter.png) no-repeat center center;	
+		}
+	}
+	.menu {
+		float: left;
+		margin-left: 20px;
+		@include clearer();
+		.menuItem {
+			font-weight: bold;
+			color: $white;
+			cursor: pointer;
+			float: left;
+			margin-right: 30px;
+			text-transform: uppercase;
+			padding-top: 10px;
+			font-family: $fontFamilyAlt;
+		}
+		.menuItem a {
+			color: $white;
+			font-weight: normal;
+		}
+		.menuItem a:hover {
+			color: $colorAccentAlt;
+		}
+	}
+	.footer {
+		margin: 0 ;
+		background: $colorAccentAlt;
+		color: darken($colorAccent, 20%);
+		padding: 30px 20px;
+		font-size: $fontSizeTiny;
+		p {
+			padding: 0;
+			margin: 0;
+		}
+		a {
+			color: darken($colorAccent, 10%);
+		}
+	}
+	.contentFormat {
+		padding: 80px 0 0 0;
+		.content {
+			max-width: $sizeTablet;
+			margin: auto;
+		}
+	}
+	h1 {
+		font-size: $fontSizeHuge;
+		text-transform: uppercase;
+		font-family: $fontFamilyAlt;
+		font-weight: bold;
+		color: $colorAccent;
+		padding: 0 0 20px 0;
+		margin: 0 0 20px 0;
+		position: relative;
+		&:before {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 15%;
+			height: 5px;
+			background: rgba($colorAccent, 0.2);
+			content: '';
+		}
+	}
+	.pages {
+		.page.pageIntro {
+			padding: 80px 20px 20px 20px;
+			max-width: $sizeDesktop;
+			margin: auto;
+			background: $white;
+			.pageIns {
+				@include clearer();
+			}
+		}
+		.pageIntroLeft {
+			width: 250px;
+			float: left;
+			.logo{
+				width:200px;
+				height: 200px;
+				background: url(../../img/logo.jpg) no-repeat center center;
+				text-align: left;
+				text-indent: -5000px;
+			}
+		}
+		.pageIntroRight {
+			display: inline;
+			color: $colorAccent;
+			font-size: $fontSizeNormal;
+			strong {
+				color: darken($colorAccent, 5%);
+			}
+			a {
+				color: darken($colorAccent, 10%);
+				&:hover {
+					color: darken($colorAccent, 20%);
+				}
+			}
+		}
+		.pageIntroRight h2{
+			color: $colorText;
+			padding-bottom: 10px;
+			font-size: $fontSizeHuge;
+			font-weight: bold;
+			text-transform: none;
+			font-family: $fontFamilyAlt;
+			text-transform: uppercase;
+		}
+		.pageApplications {
+			background: $colorText;
+			color: $white;
+			text-align: center;
+			@include clearer();
+			.pageIns {
+				padding-left: 20px;
+		    	padding-right: 20px;
+				max-width: $sizeDesktop;
+				margin: auto;
+			}
+			a {
+				color: $white;
+			}
+		}
+		.apps {
+			padding-top: 50px;
+			@include clearer();
+			.app {
+				width:33.33%;
+				float: left;
+			}
+			.appIns {
+				margin: 20px;
+				position: relative;
+				text-align: center;
+				@include borderBox();
+			}
+			.appImage {
+				height: 250px;
+				background-size: cover;
+				background-position: center center;
+				background-repeat: no-repeat;
+			}
+			.appText {
+				position: absolute;
+				background: rgba($colorText, 0.2);
+				top:0px;
+				left:0px;
+				right: 0px;
+				bottom: 0px;
+				padding: 20px;
+				text-shadow: 0 0 4px darken($colorText, 10%);
+			}
+			h3 {
+				font-family: $fontFamilyAlt;
+				font-size: $fontSizeBig;
+				text-transform: uppercase;
+				padding: 10px;
+				margin-bottom: 10px;
+				background: $colorText;
+			}
+			p {
+				display: block;
+				position: absolute;
+				bottom: 5px;
+				left: 5px;
+				right: 5px;
+				padding: 15px !important;
+				background: lighten($colorText, 10%) !important;
+				font-weight: bold;
+			}
+			.fbDialogButton {
+				display: block;
+				cursor: pointer;
+				&:hover {
+					.appImage {
+						opacity: 0.8;
+					}
+					.appText {
+						background: rgba($colorAccent, 0.2);
+					}
+					h3 {
+						background: lighten($colorText, 10%);
+					}
+					p {
+						background: lighten($colorText, 20%) !important;
+					}
+				}
+			}
+			.app p{
+				padding: 0px;
+			}
+		}
+	}
+	.pageTitle {
+		position: relative;
+		margin: auto;
+		margin-bottom: 80px; 
+		text-transform: uppercase;
+		text-align: center;
+		font-weight: bold;
+		font-family: $fontFamilyAlt;
+		h3 {
+			display: inline;
+			padding: 15px 5px;
+			background: $white;
+			border: 5px solid $colorAccent;
+			font-size: $fontSizeHuge;
+			word-spacing: 0.6em;
+			span {
+				background: $colorAccent;
+				padding: 10px 30px;
+				font-weight: normal;
+				color: $white;
+			}
+		}
+	}
+}
+.linkMobile {
+	background: rgba($colorAccentAlt, 0.8);
+	padding: 10px;
+	text-align: right;
+	font-size: $fontSizeTiny;
+	color: $colorAccent;
+	a {
+		display: block;
+		color: $colorAccent;
+	}
+}
+.formPublic {
+	margin: 0 auto 20px auto;
+	padding: 20px;
+	background: rgba($white, 0.8);
+	border: 3px solid rgba($colorAccentAlt, 0.8);
+	h2 {
+		font-size: $fontSizeBig;
+		font-family: $fontFamilyAlt;
+		color: $colorText;
+		padding: 15px 0;
+		margin: 15px 0;
+		position: relative;
+		border-top: 5px solid rgba($colorAccentAlt, 0.4);
+		&:first-child {
+			padding: 0 0 15px 0;
+			margin: 0 auto 15px auto;
+			border: 0;
+		}
+	}
+	.formField {
+		margin: 0 0 20px 0;
+		label {
+			color: darken($colorAccent, 10%);
+			display: block;
+			font-size: $fontSizeSmall;
+			padding: 0 0 5px 0;
+			font-weight: bold;
+		}
+		input,
+		select,
+		textarea {
+			color: $colorText;
+			display: block;
+			padding: 5px;
+			border: 1px solid darken($white, 30%);
+			background: $white;
+			font-family: $fontFamily;
+			width: 100%;
+			@include borderRadius(3px);
+		}
+		&.color input {
+			margin: 0;
+			padding: 0;
+			border: 0;
+			width: 100%;
+			height: 30px;
+			cursor: pointer;
+		}
+		&.error {
+			input,
+			select,
+			textarea {
+				border: 1px solid $colorError;
+			}
+		}
+		.formFieldsFile {
+			a {
+				display: block;
+				font-size: $fontSizeTiny;
+				text-decoration: underline;
+				color: $colorAccent;
+				padding: 5px 0 0 0;
+				&:hover {
+					color: darken($colorAccent, 20%);
+				}
+			}
+		}
+	}
+	.error {
+		font-size: $fontSizeTiny;
+		font-weight: bold;
+		display: block;
+		padding: 0 0 3px 0;
+		color: $colorError;
+	}
+	input.formSubmit {
+		background: $colorAccent;
+		color: $white;
+		width: 200px;
+		display: block;
+		margin: auto;
+		padding: 10px;
+		text-align: center;
+		font-family: $fontFamily;
+		font-weight: bold;
+		text-transform: uppercase;
+		border: 0;
+		cursor: pointer;
+		@include borderRadius(3px);
+		&:hover {
+			background: darken($colorAccent, 10%);
+		}
+	}
+	.formFields {
+		@include clearer();
+		&.formFields2,
+		&.formFields3 {
+			.formField {
+				width: 50%;
+				float: left;
+				padding-right: 20px;
+				@include borderBox();
+				@include clearer();
+				&:last-child {
+					padding-right: 0;
+				}
+			}
+		}
+		&.formFields3 {
+			.formField {
+				width: calc(100% / 3);
+			}
+		}
+	}
+	.formHelp {
+		color: lighten($colorAccent, 5%);
+		font-size: $fontSizeSmall;
+		padding: 10px 0 20px 0;
+	}
+	.videosExtra {
+		padding: 10px 0 0 0;
+		margin: 50px 0 0 0;
+		border-top: 5px solid rgba($colorAccentAlt, 0.5);
+	}
+}
+.message {
+	max-width: $sizeTablet;
+	margin: 20px auto;
+	padding: 20px;
+	background: $colorAccentAlt;
+	border: 3px solid darken($colorAccentAlt, 10%);
+	color: $colorText;
+	text-align: center;
+	font-weight: bold;
+	a {
+		color: $colorText;
+		text-decoration: underline;
+	}
+}
+
+.pageHowToUse,
+.pagePersonalization {
+	.pageIns {
+		max-width: $sizeDesktop;
+		padding: 20px 10px;
+		margin: auto;
+	}
+}
+
+.pageHowToUse {
+	background: $colorAccentAlt;
+	color: darken($colorAccent, 5%);
+	.pageIns {
+		max-width: $sizeTablet;
+	}
+	strong {
+		color: darken($colorAccent, 10%);
+		font-size: $fontSizeHuge;
+		display: block;
+		padding: 20px 0 0 0;
+		margin: 50px 0 0 0;
+		position: relative;
+		&:before {
+			position: absolute;
+			top: 0;
+			width: 30%;
+			height: 5px;
+			background: darken($colorAccentAlt, 15%);
+			content: '';
+		}
+	}
+	em {
+		color: darken($colorAccent, 20%);
+		font-style: normal;
+		font-size: $fontSizeSmall;
+	}
+	a {
+		color: $colorAccent;
+	}
+}
+
+.pagePersonalization {
+	background: $colorAccent;
+	color: $white;
+	.pageIns {
+		max-width: $sizeTablet;
+		font-size: $fontSizeBig;
+		text-align: center;
+		p {
+			line-height: 1.3em;
+			strong {
+				color: darken($colorAccentAlt, 10%);
+			}
+			a {
+				font-weight: bold;
+				text-decoration: underline;
+				color: lighten($colorAccentAlt, 10%);
+				&:hover {
+					color: $colorAccentAlt;
+				}
+			}
+		}
+	}
+}
+
+.imageVideos {
+	display: table;
+	width: 100%;
+	table-layout: fixed;
+	.imageVideo {
+		display: table-cell;
+		vertical-align: middle;
+		text-align: center;
+		padding: 10px;
+		a {
+			display: block;
+			img {
+				width: 100%;
+			}
+			&:hover {
+				img {
+					opacity: 0.7;
+				}
+			}
+		}
+	}
+}
 
 @import "_public_responsive.scss";

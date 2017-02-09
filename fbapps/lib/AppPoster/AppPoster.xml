@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+* @structure AppPoster
+*
+* @author Leano Martinet <info@asterion-cms.com>
+* @package Asterion
+* @version 3.0.1
+-->
+<object>
+    <name>AppPoster</name>
+    <info>
+        <sql>
+            <primary>idAppPoster</primary>
+        </sql>
+        <form>
+            <title>appPoster</title>
+            <orderBy>title</orderBy>
+            <label>#title</label>
+            <templateItemAdmin>
+                <p class="accent"><strong>#title</strong></p>
+            </templateItemAdmin>
+        </form>
+    </info>
+    <attributes>
+        <attribute>
+            <name>idAppPoster</name>
+            <type>id-autoincrement</type>
+        </attribute>
+        <attribute>
+            <name>pageId</name>
+            <type>hidden</type>
+        </attribute>
+        <attribute>
+            <name>title</name>
+            <label>title</label>
+            <required>notEmpty</required>
+            <type>text</type>
+        </attribute>
+        <attribute>
+            <name>poster</name>
+            <label>poster</label>
+            <type>file</type>
+            <mode>image</mode>
+        </attribute>
+    </attributes>
+</object>

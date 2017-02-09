@@ -1,13 +1,13 @@
 $white: #FFF;
 $black: #000;
 
-$colorText: #333;
-$colorTextAlt: #555;
+$colorText: #233036;
+$colorTextAlt: lighten(#233036, 10%);
 
-$colorMain: #069;
-$colorMainAlt: #1B9E3E;
-$colorAccent:  #ef352b;
-$colorAccentAlt: #ffbe1c;
+$colorMain: #60a883;
+$colorMainAlt: #7bc494;
+$colorAccent: #00AB83;
+$colorAccentAlt: #CBE67C;
 
 $colorActive: #29C74D;
 $colorNotActive: #818181;
@@ -27,7 +27,8 @@ $colorLinkedin: #4875B4;
 $colorVimeo: #162221;
 $colorInstagram: #517fa4;
 
-$fontFamily: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+$fontFamily: 'Open Sans', sans-serif;
+$fontFamilyAlt: 'Oswald', sans-serif;
 $fontFamilyIcons: "icons";
 $fontFamilyCode: monospace;
 
