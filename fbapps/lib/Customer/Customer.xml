@@ -15,7 +15,7 @@
             <modified>true</modified>
         </sql>
         <form>
-            <title>users</title>
+            <title>customers</title>
             <label>#name</label>
             <orderBy>name</orderBy>
             <templateItemAdmin>
@@ -50,7 +50,7 @@
             <type>text</type>
         </attribute>
         <attribute>
-            <name>facebookSignature</name>
+            <name>facebookId</name>
             <type>hidden</type>
         </attribute>
         <attribute>

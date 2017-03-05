@@ -12,116 +12,179 @@ class Customer_Controller extends Controller {
 
     public function controlActions(){
         $this->ui = new Navigation_Ui($this);
-        switch ($this->action) {
-            case 'conectarse':
-                $this->titlePage = __('login');
-                if (count($this->values)>0) {
-                    $login = Customer_Login::getInstance();
-                    $login->checklogin($this->values);
-                    if ($login->isConnected()) {
-                        header('Location: '.url(''));
-                    } else {
+        if ($this->action=='cuenta') {
+            $this->layoutPage = 'account';
+            switch ($this->id) {
+                case 'conectarse':
+                    $this->titlePage = __('login');
+                    if (count($this->values)>0) {
+                        $login = Customer_Login::getInstance();
+                        $login->checklogin($this->values);
+                        if ($login->isConnected()) {
+                            header('Location: '.url('cuenta/'));
+                        } else {
+                            $form = new Customer_Form();
+                            $this->messageError = __('errorConnection');
+                            $this->content = $form->login();
+                        }
+                    } else {                
                         $form = new Customer_Form();
-                        $this->messageError = __('errorConnection');
                         $this->content = $form->login();
                     }
-                } else {                
-                    $form = new Customer_Form();
-                    $this->content = $form->login();
-                }
-                return $this->ui->render();
-            break;
-            case 'crear-cuenta':
-                $this->titlePage = __('createAccount');
-                if (count($this->values)>0) {
-                } else {                
-                    $form = new Customer_Form();
+                    return $this->ui->render();
+                break;
+                case 'conectarse-facebook':
+                    try {
+                        $fb = Navigation_Controller::getFacebookObject();
+                        $helper = $fb->getRedirectLoginHelper();
+                        $oAuth2Client = $fb->getOAuth2Client();
+                        $accessToken = $helper->getAccessToken();
+                        $tokenMetadata = $oAuth2Client->debugToken($accessToken);
+                        $customerId = $tokenMetadata->getUserId();
+                        $customer = Customer::readFirst(array('where'=>'facebookId="'.$customerId.'"'));
+                        if ($customer->id()=='') {
+                            $customer = new Customer();
+                            $info = $fb->get('/me?fields=id,name,email', $accessToken);
+                            $body = $info->getDecodedBody();
+                            $values = array('facebookId'=>$body['id'],
+                                            'name'=>$body['name'],
+                                            'email'=>$body['email'],
+                                            'password'=>substr(md5(rand()*rand()), 0, 6),
+                                            'active'=>'1');
+                            $customer->insert($values);
+                        }
+                        $login = Customer_Login::getInstance();
+                        $login->autoLogin($customer);
+                        header('Location: '.url('cuenta/mi-cuenta'));
+                    } catch(PDOException $error){
+                        if (DEBUG) {
+                            throw new Exception('<pre>'.$error->getMessage().'</pre>');
+                        } else {
+                            header('Location: '.url('cuenta/crear-cuenta'));
+                        }
+                    }
+                    exit();
+                break;
+                case 'crear-cuenta':
+                    $this->titlePage = __('createAccount');
+                    if (count($this->values)>0) {
+                        $form = new Customer_Form($this->values);
+                        $errors = $form->isValid();
+                        if (count($errors) > 0) {
+                            $form = new Customer_Form($this->values, $errors);
+                        } else {
+                            $this->values['active'] = 1;
+                            $customer = new Customer();
+                            $customer->insert($this->values);
+                            $login = Customer_Login::getInstance();
+                            $login->autoLogin($customer);
+                            HtmlMail::send($customer->get('email'), 'welcome');
+                            header('Location: '.url('cuenta/mi-cuenta'));
+                            exit();
+                        }
+                    } else {                
+                        $form = new Customer_Form();
+                    }
                     $this->content = $form->createAccount();
-                }
-                return $this->ui->render();
-            break;
-            case 'salir':
-                $login = Customer_Login::getInstance();
-                $login->logout();
-                header('Location: '.url(''));
-            break;
-            case 'olvide-password':
-                $this->mode = 'admin';
-                $this->layoutPage = 'simple';
-                $this->titlePage = __('passwordForgot');
-                $form = new Customer_Form();
-                if (isset($this->values['email'])) {
-                    $user = Customer::readFirst(array('where'=>'email="'.$this->values['email'].'" AND active="1"'));
-                    if ($user->id()!='') {
-                        $tempPassword = substr(md5(rand()*rand()), 0, 10);
-                        $user->modifySimple('passwordTemp', $tempPassword);
-                        $updatePasswordLink = url('Customer/login', true);
-                        HtmlMail::send($user->get('email'), 'passwordForgot', array('TEMP_PASSWORD'=>$tempPassword, 'UPDATE_PASSWORD_LINK'=>$updatePasswordLink));
-                        $this->content = $form->forgotSent();
+                    return $this->ui->render();
+                break;
+                case 'salir':
+                    $login = Customer_Login::getInstance();
+                    $login->logout();
+                    header('Location: '.url(''));
+                break;
+                case 'olvide-password':
+                    $this->titlePage = __('passwordForgot');
+                    $form = new Customer_Form();
+                    if (isset($this->values['email'])) {
+                        $customer = Customer::readFirst(array('where'=>'email="'.$this->values['email'].'" AND active="1"'));
+                        if ($customer->id()!='') {
+                            $tempPassword = substr(md5(rand()*rand()), 0, 10);
+                            $customer->modifySimple('passwordTemp', $tempPassword);
+                            $updatePasswordLink = url('cuenta/conectarse');
+                            HtmlMail::send($customer->get('email'), 'passwordForgot', array('TEMP_PASSWORD'=>$tempPassword, 'UPDATE_PASSWORD_LINK'=>$updatePasswordLink));
+                            $this->content = $form->forgotSent();
+                        } else {
+                            $this->messageError = __('mailDoesntExist');
+                            $this->content = $form->forgot();
+                        }
                     } else {
-                        $this->messageError = __('mailDoesntExist');
+                        $form = new Customer_Form();
                         $this->content = $form->forgot();
                     }
-                } else {
-                    $form = new Customer_Form();
-                    $this->content = $form->forgot();
-                }
-                return $this->ui->render();
-            break;
-            case 'mi-cuenta':
-                $this->login = Customer::login();
-                $this->mode = 'admin';
-                $this->titlePage = __('myAccount');
-                $form = Customer_Form::newObject($this->login->user());
-                $this->message = ($this->id == 'successPersonal') ? __('savedForm') : '';
-                $this->message = ($this->id == 'successPassword') ? __('changePasswordSuccess') : $this->message;
-                $this->messageError = ($this->id == 'errorPersonal') ? __('errorsForm') : '';
-                $this->messageError = ($this->id == 'errorPassword') ? __('changePasswordError') : $this->messageError;
-                $this->content = '<div class="myAccount">
-                                        <div class="myAccountPersonal">
-                                            '.$form->myAccount().'
-                                        </div>
-                                        <div class="myAccountPassword">
-                                            '.$form->changePassword().'
-                                        </div>
-                                    </div>';
-                return $this->ui->render();
-            break;
-            case 'mi-cuenta-informacion':
-                $this->login = Customer::login();
-                if (count($this->values) > 0) {
-                    $this->values['idCustomer'] = $this->login->id();
-                    $form = new Customer_Form($this->values);
-                    $errors = $form->isValidMyInformation($this->values);
-                    if (count($errors) > 0) {
-                        header('Location: '.url('Customer/myAccount/errorPersonal', true));
+                    return $this->ui->render();
+                break;
+                case 'mi-cuenta':
+                    $this->login = Customer::login();
+                    $this->titlePage = __('myAccount');
+                    $customer = $this->login->customer();
+                    $this->content = $customer->showUi('Payments');
+                    return $this->ui->render();
+                break;
+                case 'aplicaciones-instaladas':
+                    $this->login = Customer::login();
+                    $this->titlePage = __('installedApplications');
+                    $customer = $this->login->customer();
+                    $this->content = $customer->showUi('InstalledApplications');
+                    return $this->ui->render();
+                break;
+                case 'pagos':
+                    $this->login = Customer::login();
+                    $this->titlePage = __('payments');
+                    $customer = $this->login->customer();
+                    $this->content = 'dsadas';
+                    return $this->ui->render();
+                break;
+                case 'informacion-personal':
+                    $this->login = Customer::login();
+                    $this->titlePage = __('personalInformation');
+                    $form = Customer_Form::newObject($this->login->customer());
+                    if (count($this->values) > 0) {
+                        $this->values['idCustomer'] = $this->login->id();
+                        $form = new Customer_Form($this->values);
+                        $errors = $form->isValidMyInformation($this->values);
+                        if (count($errors) > 0) {
+                            $this->messageError = __('errorsForm');
+                        } else {
+                            $this->login->customer()->modify($this->values, array('complete'=>false));
+                            $this->message = __('savedForm');
+                        }
+                        header('Location: '.url($this->action.'/'.$this->id));
+                        exit();
                     } else {
-                        $this->login->user()->modify($this->values, array('complete'=>false));
-                        header('Location: '.url('Customer/myAccount/successPersonal', true));
+                        $this->content = $form->myAccount();
                     }
-                    exit();
-                }
-                header('Location: '.url('Customer/myAccount', true));
-                exit();
-            break;
-            case 'mi-cuenta-password':
-                $this->login = Customer::login();
-                if (count($this->values) > 0) {
-                    $this->values['idCustomer'] = $this->login->id();
-                    $form = new Customer_Form($this->values);
-                    $errors = $form->isValidChangePassword($this->login->user());
-                    if (count($errors) > 0) {
-                        header('Location: '.url('Customer/myAccount/errorPassword', true));
+                    return $this->ui->render();
+                break;
+                case 'cambiar-password':
+                    $this->login = Customer::login();
+                    $this->titlePage = __('changePassword');
+                    $form = Customer_Form::newObject($this->login->customer());
+                    if (count($this->values) > 0) {
+                        $this->values['idCustomer'] = $this->login->id();
+                        $form = new Customer_Form($this->values);
+                        $errors = $form->isValidChangePassword($this->login->customer());
+                        if (count($errors) > 0) {
+                            $this->messageError = __('changePasswordError');
+                        } else {
+                            $this->login->customer()->modify($this->values, array('complete'=>false));
+                            $this->login->customer()->modifySimple('passwordTemp', '');
+                            $this->message = __('changePasswordSuccess');
+                        }
+                        header('Location: '.url($this->action.'/'.$this->id));
+                        exit();
                     } else {
-                        $this->login->user()->modify($this->values, array('complete'=>false));
-                        $this->login->user()->modifySimple('passwordTemp', '');
-                        header('Location: '.url('Customer/myAccount/successPassword', true));
+                        $this->content = $form->changePassword();
                     }
-                    exit();
-                }
-                header('Location: '.url('Customer/myAccount', true));
-                exit();
-            break;
+                    return $this->ui->render();
+                break;
+                case 'pagar-suscripcion':
+                    $this->login = Customer::login();
+                    $this->titlePage = __('paySubscription');
+                    $this->content = 'dasdas';
+                    return $this->ui->render();
+                break;
+            }
         }
         return parent::controlActions();
     }    

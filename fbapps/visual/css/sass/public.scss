@@ -215,68 +215,6 @@ body {
 			}
 		}
 	}
-	.header {
-		background: $colorAccent;
-		padding: 5px 20px;
-		height: 40px;
-		position: fixed;
-		top: 0px;
-		left: 0px;
-		right: 0px;
-		z-index: 9999;
-		border-bottom: 1px solid $colorText;
-		-moz-box-shadow: 0px 0px 4px $colorText;
-		-webkit-box-shadow: 0px 0px 4px $colorText;
-		box-shadow: 0px 0px 4px $colorText;
-		@include clearer();
-		.headerIns {
-			max-width: $sizeDesktop;
-			margin: auto;
-		}
-		.logo {
-			width:38px;
-			float: left;
-			a {
-				height: 40px;
-				width:38px;
-				display: block;
-				background: url(../../img/logoTop.jpg) no-repeat center center;
-				text-indent: -5000px;
-			}
-		}
-		.headerLeft {
-			width: 70%;
-			float: left;
-		}
-		.headerRight {
-			width: 30%;
-			float: right;
-		}
-	}
-	.shareIcons {
-		float: right;
-		padding-left: 20px;
-		margin-left: 25px;
-		border-left: 1px solid $colorMain;
-		margin-top: 5px;
-		@include clearer();
-		.shareIcon {
-			width:30px;
-			float: right;
-			margin-left: 5px;
-		}
-		.shareIcon a {
-			display: block;
-			width: 30px;
-			height: 30px;
-			background: url(../../img/icoFacebook.png) no-repeat center center;
-			text-indent: -5000px;
-			overflow: hidden;
-		}
-		.shareIconTwitter a {
-			background: url(../../img/icoTwitter.png) no-repeat center center;	
-		}
-	}
 	.menu {
 		float: left;
 		margin-left: 20px;
@@ -299,24 +237,12 @@ body {
 			color: $colorAccentAlt;
 		}
 	}
-	.footer {
-		margin: 0 ;
-		background: $colorAccentAlt;
-		color: darken($colorAccent, 20%);
-		padding: 30px 20px;
-		font-size: $fontSizeTiny;
-		p {
-			padding: 0;
-			margin: 0;
-		}
-		a {
-			color: darken($colorAccent, 10%);
-		}
-	}
 	.contentFormat {
-		padding: 80px 0 0 0;
+		.contentFormatIns {
+			padding: 80px 0 0 0;
+		}
 		.content {
-			max-width: $sizeTablet;
+			max-width: $sizeDesktop;
 			margin: auto;
 		}
 	}
@@ -339,156 +265,143 @@ body {
 			content: '';
 		}
 	}
-	.pages {
-		.page.pageIntro {
-			padding: 80px 20px 20px 20px;
-			max-width: $sizeDesktop;
-			margin: auto;
-			background: $white;
-			.pageIns {
-				@include clearer();
+}
+.pageTitle {
+	position: relative;
+	margin: auto;
+	margin-bottom: 80px; 
+	text-transform: uppercase;
+	text-align: center;
+	font-weight: bold;
+	font-family: $fontFamilyAlt;
+	h3 {
+		display: inline;
+		padding: 15px 5px;
+		background: $white;
+		border: 5px solid $colorAccent;
+		font-size: $fontSizeHuge;
+		word-spacing: 0.6em;
+		span {
+			background: $colorAccent;
+			padding: 10px 30px;
+			font-weight: normal;
+			color: $white;
+		}
+	}
+}
+.pageIntro {
+	padding: 80px 20px 40px 20px;
+	max-width: $sizeTablet;
+	margin: auto;
+	background: $white;
+	.pageIns {
+		@include clearer();
+	}
+	.pageIntroLeft {
+		width: 25%;
+		float: left;
+		.logo{
+			width:100%;
+			height: 200px;
+			background-image: url(../../img/logo.jpg);
+			background-repeat: no-repeat;
+			background-size: contain;
+			background-position: top center;
+			text-align: left;
+			text-indent: -5000px;
+		}
+	}
+	.pageIntroRight {
+		width: 70%;
+		float: right;
+		color: darken($colorAccent, 3%);
+		font-size: $fontSizeBig;
+		p {
+			line-height: 1.4em;
+		}
+		strong {
+			color: darken($colorAccent, 5%);
+		}
+		a {
+			color: darken($colorAccent, 10%);
+			&:hover {
+				color: darken($colorAccent, 20%);
 			}
 		}
-		.pageIntroLeft {
-			width: 250px;
-			float: left;
-			.logo{
-				width:200px;
-				height: 200px;
-				background: url(../../img/logo.jpg) no-repeat center center;
-				text-align: left;
-				text-indent: -5000px;
-			}
-		}
-		.pageIntroRight {
-			display: inline;
-			color: $colorAccent;
-			font-size: $fontSizeNormal;
-			strong {
-				color: darken($colorAccent, 5%);
-			}
-			a {
-				color: darken($colorAccent, 10%);
-				&:hover {
-					color: darken($colorAccent, 20%);
-				}
-			}
-		}
-		.pageIntroRight h2{
+		h2{
 			color: $colorText;
-			padding-bottom: 10px;
+			padding-bottom: 30px;
 			font-size: $fontSizeHuge;
 			font-weight: bold;
 			text-transform: none;
 			font-family: $fontFamilyAlt;
 			text-transform: uppercase;
-		}
-		.pageApplications {
-			background: $colorText;
-			color: $white;
-			text-align: center;
-			@include clearer();
-			.pageIns {
-				padding-left: 20px;
-		    	padding-right: 20px;
-				max-width: $sizeDesktop;
-				margin: auto;
-			}
-			a {
-				color: $white;
-			}
-		}
-		.apps {
-			padding-top: 50px;
-			@include clearer();
-			.app {
-				width:33.33%;
-				float: left;
-			}
-			.appIns {
-				margin: 20px;
-				position: relative;
-				text-align: center;
-				@include borderBox();
-			}
-			.appImage {
-				height: 250px;
-				background-size: cover;
-				background-position: center center;
-				background-repeat: no-repeat;
-			}
-			.appText {
-				position: absolute;
-				background: rgba($colorText, 0.2);
-				top:0px;
-				left:0px;
-				right: 0px;
-				bottom: 0px;
-				padding: 20px;
-				text-shadow: 0 0 4px darken($colorText, 10%);
-			}
-			h3 {
-				font-family: $fontFamilyAlt;
-				font-size: $fontSizeBig;
-				text-transform: uppercase;
-				padding: 10px;
-				margin-bottom: 10px;
-				background: $colorText;
-			}
-			p {
-				display: block;
-				position: absolute;
-				bottom: 5px;
-				left: 5px;
-				right: 5px;
-				padding: 15px !important;
-				background: lighten($colorText, 10%) !important;
-				font-weight: bold;
-			}
-			.fbDialogButton {
-				display: block;
-				cursor: pointer;
-				&:hover {
-					.appImage {
-						opacity: 0.8;
-					}
-					.appText {
-						background: rgba($colorAccent, 0.2);
-					}
-					h3 {
-						background: lighten($colorText, 10%);
-					}
-					p {
-						background: lighten($colorText, 20%) !important;
-					}
-				}
-			}
-			.app p{
-				padding: 0px;
-			}
+			padding: 0 30% 0 0;
+			line-height: 1.2em;
 		}
 	}
-	.pageTitle {
+}
+.pageApplications {
+	background: $colorAccentAlt;
+	padding: 50px 0 100px 0;
+}
+.apps {
+	max-width: $sizeDesktop;
+	margin: auto;
+	@include clearer();
+	.app {
+		width:33.33%;
+		float: left;
+	}
+	.appIns {
+		margin: 15px 15px 80px 15px;
 		position: relative;
-		margin: auto;
-		margin-bottom: 80px; 
-		text-transform: uppercase;
 		text-align: center;
-		font-weight: bold;
+		@include borderBox();
+	}
+	.appImage {
+		height: 200px;
+		background-size: cover;
+		background-position: center center;
+		background-repeat: no-repeat;
+	}
+	.appText {
+		position: absolute;
+		background: rgba($colorText, 0.2);
+		top:0px;
+		left:0px;
+		right: 0px;
+		bottom: 0px;
+		padding: 0;
+	}
+	h3 {
 		font-family: $fontFamilyAlt;
+		font-size: $fontSizeBig;
+		text-transform: uppercase;
+		padding: 15px 10px;
+		background: $colorText;
+		color: $white;
+		text-shadow: 0 0 4px darken($colorText, 10%);
+	}
+	p {
+		display: block;
+		position: absolute;
+		bottom: -50px;
+		left: 0;
+		right: 0;
+		padding: 10px !important;
+		color: darken($colorAccent, 15%);
+		font-weight: normal;
+	}
+	a:hover {
+		.appText {
+			background: transparent;
+		}
 		h3 {
-			display: inline;
-			padding: 15px 5px;
-			background: $white;
-			border: 5px solid $colorAccent;
-			font-size: $fontSizeHuge;
-			word-spacing: 0.6em;
-			span {
-				background: $colorAccent;
-				padding: 10px 30px;
-				font-weight: normal;
-				color: $white;
-			}
+			background: darken($colorAccent, 10%);
+		}
+		p {
+			color: lighten($colorText, 20%)!important;
 		}
 	}
 }
@@ -641,70 +554,10 @@ body {
 		color: $colorText;
 		text-decoration: underline;
 	}
-}
-
-.pageHowToUse,
-.pagePersonalization {
-	.pageIns {
-		max-width: $sizeDesktop;
-		padding: 20px 10px;
-		margin: auto;
-	}
-}
-
-.pageHowToUse {
-	background: $colorAccentAlt;
-	color: darken($colorAccent, 5%);
-	.pageIns {
-		max-width: $sizeTablet;
-	}
-	strong {
-		color: darken($colorAccent, 10%);
-		font-size: $fontSizeHuge;
-		display: block;
-		padding: 20px 0 0 0;
-		margin: 50px 0 0 0;
-		position: relative;
-		&:before {
-			position: absolute;
-			top: 0;
-			width: 30%;
-			height: 5px;
-			background: darken($colorAccentAlt, 15%);
-			content: '';
-		}
-	}
-	em {
-		color: darken($colorAccent, 20%);
-		font-style: normal;
-		font-size: $fontSizeSmall;
-	}
-	a {
-		color: $colorAccent;
-	}
-}
-
-.pagePersonalization {
-	background: $colorAccent;
-	color: $white;
-	.pageIns {
-		max-width: $sizeTablet;
-		font-size: $fontSizeBig;
-		text-align: center;
-		p {
-			line-height: 1.3em;
-			strong {
-				color: darken($colorAccentAlt, 10%);
-			}
-			a {
-				font-weight: bold;
-				text-decoration: underline;
-				color: lighten($colorAccentAlt, 10%);
-				&:hover {
-					color: $colorAccentAlt;
-				}
-			}
-		}
+	&.messageError {
+		background: $colorError;
+		color: $white;
+		border: 3px solid darken($colorError, 5%);
 	}
 }
 
@@ -717,6 +570,12 @@ body {
 		vertical-align: middle;
 		text-align: center;
 		padding: 10px;
+		&:first-child {
+			padding: 10px 10px 10px 0;
+		}
+		&:last-child {
+			padding: 10px 0 10px 10px;
+		}
 		a {
 			display: block;
 			img {
@@ -728,6 +587,381 @@ body {
 				}
 			}
 		}
+	}
+}
+
+.simpleForm {
+	max-width: 500px;
+	margin: 0 auto 50px auto;
+	padding: 30px;
+	background: lighten($colorAccentAlt, 15%);
+	@include borderRadius(5px);
+	@include borderBox();
+	p {
+		font-size: $fontSizeNormal;
+		padding: 0 0 15px 0;
+		color: lighten($colorText, 10%);
+		&:last-child {
+			padding: 0;
+		}
+	}
+	.formField {
+		padding: 0 0 15px 0;
+		label {
+			display: block;
+			font-size: $fontSizeSmall;
+			text-transform: uppercase;
+			color: $colorText;
+			padding: 0 0 5px 0;
+			font-weight: bold;
+		}
+		input,
+		select,
+		textarea {
+			display: block;
+			padding: 5px;
+			background: $white;
+			border: 1px solid lighten($colorText, 30%);
+			color: $colorText;
+			font-family: $fontFamily;
+			width: 100%;
+		}
+		&.error {
+			input,
+			select,
+			textarea {
+				border: 1px solid $colorError;
+			}
+		}
+		.error {
+			font-size: $fontSizeSmall;
+			font-weight: bold;
+			color: $colorError;
+			display: block;
+			padding: 0 0 5px 0;
+		}
+	}
+	input.formSubmit {
+		display: block;
+		width: 100%;
+		padding: 10px 30px;
+		background: darken($colorAccent, 10%);
+		margin: 10px auto 0 auto;
+		cursor: pointer;
+		text-align: center;
+		font-family: $fontFamily;
+		font-weight: bold;
+		font-size: $fontSizeNormal;
+		color: $white;
+		border: 0px;
+		text-transform: uppercase;
+		line-height: 1em;
+		@include borderRadius(5px);
+		&:hover {
+			background: darken($colorAccent, 20%);
+		}
+	}
+	.message {
+		max-width: auto;
+		margin: 0 0 40px 0;
+		padding: 0;
+		font-weight: normal;
+		color: darken($colorAccent, 15%);
+		border: 0;
+		background: transparent;
+	}
+	.options {
+		margin: 10px 0 0 0;
+		a {
+			display: block;
+			text-align: center;
+			padding: 10px 30px;
+			margin: 0 0 10px 0;
+			color: darken($colorAccent, 10%);
+			background: rgba($colorAccent, 0.1);
+			font-size: $fontSizeNormal;
+			@include borderRadius(5px);
+			&:last-child {
+				margin: 0;
+			}
+			&:hover {
+				background: rgba($colorAccent, 0.2);
+				color: $colorAccent;
+			}
+		}
+	}
+	.facebookLogin {
+		a {
+			display: block;
+			margin: 40px 0 10px 0;
+			background: $colorFacebook;
+			color: $white;
+			padding: 10px 30px;
+			@include borderRadius(5px);
+			text-transform: uppercase;
+			text-align: center;
+			position: relative;
+			line-height: 1em;
+			font-size: $fontSizeNormal;
+			@include iconBeforeAbsolute($icon-facebook, $paddingLeft: 1.2em, $top: 10px, $left: 10px);
+			&:hover {
+				background: darken($colorFacebook, 10%);
+			}
+		}
+	}
+}
+.pageSimple {
+	padding: 100px 10px 50px 10px;
+	max-width: $sizeTablet;
+	margin: auto;
+	&.pageSimple-como-instalar {
+		p {
+			strong {
+				display: block;
+				font-size: $fontSizeBig;
+				font-weight: bold;
+				padding: 20px 0 0 0;
+				color: $colorAccent;
+				position: relative;
+				&:before {
+					position: absolute;
+					top: 0;
+					left: 0;
+					content: '';
+					width: 60%;
+					height: 3px;
+					background: $colorAccentAlt;
+				}
+			}
+		}
+	}
+	&.pageSimple-costo {
+		h2 {
+			color: darken($colorAccent, 15%);
+			line-height: 1.4em;
+			font-weight: normal;
+			font-size: $fontSizeBig;
+			padding: 0 30% 20px 0;
+			strong {
+				display: inline-block;
+				padding: 10px;
+				background: lighten($colorAccentAlt, 5%);
+				font-size: $fontSizeHuge;
+			}
+		}
+	}
+}
+a.btnBig {
+	display: block;
+	margin: 20px auto;
+	background: darken($colorAccent, 10%) !important;
+	border: 4px solid darken($colorAccent, 15%);
+	color: $white !important;
+	padding: 20px;
+	max-width: 300px;
+	font-size: $fontSizeBig;
+	font-weight: bold;
+	text-align: center;
+	position: relative;
+	line-height: 1em;
+	@include borderRadius(5px);
+	@include buttonShadow();
+	&:hover {
+		border: 4px solid darken($colorAccent, 20%) !important;
+		background: darken($colorAccent, 15%) !important;
+	}
+}
+
+.contentFormatAccount {
+	.content {
+		@include clearer();
+		.contentLeft {
+			float: left;
+			width: 20%;
+		}
+		.contentRight {
+			float: right;
+			width: 78%;
+		}
+	}
+	.sidebarMenu {
+		padding: 0 0 70px 0;
+		border-right: 4px solid rgba($colorAccent, 0.1);
+		.sidebarMenuItem {
+			a {
+				display: block;
+				padding: 10px;
+				background: rgba($colorAccent, 0.1);
+				color: $colorText;
+				font-weight: bold;
+				border-bottom: 2px solid lighten($colorAccentAlt, 10%);
+				font-weight: normal;
+				font-size: $fontSizeSmall;
+				text-transform: uppercase;
+				&:hover {
+					background: rgba($colorAccent, 0.2);
+					color: darken($colorText, 10%);
+				}
+			}
+		}
+		.sidebarMenuItemPersonal {
+			a {
+				background: rgba($colorAccent, 0.15);
+			}
+		}
+		.sidebarMenuItemLogout {
+			a {
+				background: rgba(desaturate($colorAccent, 30%), 0.1);	
+				color: lighten($colorText, 20%);
+			}
+		}
+	}
+	.accountAppsExtra {
+		padding: 100px 0 0 0;
+	}
+	.accountApp {
+		padding: 20px;
+		margin: 0 0 30px 0;
+		background: rgba($colorAccentAlt, 0.4);
+		border: 1px solid rgba($colorAccentAlt, 0.8);
+		.message {
+			background: transparent;
+			padding: 0;
+			border: 0;
+			margin: 10px 0;
+			color: $colorAccent;
+		}
+		.fbPage {
+			a {
+				display: block;
+				font-size: $fontSizeBig;
+				color: darken($colorAccent, 20%);
+				padding: 0 0 10px 0;
+				span {
+					color: darken($colorAccent, 5%);
+					display: block;
+					font-size: $fontSizeNormal;
+					font-weight: normal;
+				}
+			}
+		}
+	}
+	.accountPageApp {
+		padding: 10px;
+		margin: 0 0 10px 0;
+		background: rgba($colorAccent, 0.2);
+		font-size: $fontSizeNormal;
+		span {
+			color: lighten($colorText, 10%);
+			display: block;
+			font-size: $fontSizeSmall;
+		}
+		@include borderRadius(3px);
+		@include clearer();
+		&:last-child {
+			margin: 0;
+		}
+		.accountPageAppTitle {
+			width: 60%;
+			float: left;
+		}
+		.accountPageAppOptions {
+			width: 40%;
+			float: right;
+			text-align: right;
+			a {
+				display: inline-block;
+				padding: 3px 10px 5px 10px;
+				margin: 0 0 0 10px;
+				background: darken($colorAccent, 5%);
+				color: $white;
+				font-weight: bold;
+				@include buttonShadow();
+				@include borderRadius(3px);
+				&:hover {
+					background: darken($colorAccent, 15%);
+				}
+			}
+		}
+	}
+	.fbPageInfo {
+		margin: 0;
+		padding: 10px 20px;
+		background: rgba($colorAccentAlt, 0.7);
+		border: 3px solid rgba($colorAccentAlt, 0.8);
+		border-bottom: 0;
+		font-size: $fontSizeNormal;
+		p {
+			a {
+				display: inline-block;
+				padding: 0 0 10px 0;
+				color: $colorText;
+				font-size: $fontSizeSmall;
+				color: darken($colorAccent, 20%);
+				span {
+					font-weight: normal;
+					font-size: $fontSizeTiny;
+					color: darken($colorAccent, 10%);
+				}
+			}
+			strong {
+				color: darken($colorAccent, 5%);
+				display: inline-block;
+				font-size: $fontSizeSmall;
+				width: 200px;
+				text-transform: uppercase;
+			}
+		}
+	}
+}
+
+.appComplete {
+	max-width: $sizeTablet;
+	margin: auto;
+	padding: 20px 0;
+	@include clearer();
+	.appCompleteLeft {
+		width: 25%;
+		float: left;
+		img {
+			border: 5px solid $white;
+			width: 100%;
+		}
+	}
+	.appCompleteRight {
+		width: 70%;
+		float: right;
+		font-size: $fontSizeBig;
+		line-height: 1.2em;
+		color: darken($colorAccent, 20%);
+		strong {
+			color: darken($colorAccent, 10%);
+		}
+		p {
+			padding: 0 0 1em;
+		}
+	}
+}
+.messagePayment {
+	text-align: center;
+	font-size: $fontSizeNormal;
+	color: darken($colorAccent, 10%);
+	max-width: $sizeTablet;
+	margin: 10px auto;
+	padding: 20px;
+	background: rgba($colorAccent, 0.1);
+	@include borderRadius(5px);
+	p {
+		padding: 0 0 10px 0;
+		margin: 0;
+	}
+	strong {
+		font-size: $fontSizeBig;
+		color: darken($colorAccent, 15%);
+	}
+	.btnBig {
+		margin: 20px auto 0 auto;
+		font-size: $fontSizeBig;
 	}
 }
 

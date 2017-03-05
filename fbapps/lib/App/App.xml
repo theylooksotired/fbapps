@@ -43,6 +43,12 @@
             <refAttribute>title</refAttribute>
         </attribute>
         <attribute>
+            <name>code</name>
+            <label>code</label>
+            <required>notEmpty</required>
+            <type>text-code</type>
+        </attribute>
+        <attribute>
             <name>objectName</name>
             <label>objectName</label>
             <type>text-long</type>
@@ -53,15 +59,24 @@
             <type>text-long</type>
         </attribute>
         <attribute>
+            <name>appSecret</name>
+            <label>appSecret</label>
+            <type>text-long</type>
+        </attribute>
+        <attribute>
             <name>appUrl</name>
             <label>appUrl</label>
             <type>text-long</type>
         </attribute>
         <attribute>
+            <name>shortDescription</name>
+            <label>shortDescription</label>
+            <type>textarea</type>
+        </attribute>
+        <attribute>
             <name>description</name>
             <label>description</label>
-            <lang>true</lang>
-            <type>textarea</type>
+            <type>textarea-ck</type>
         </attribute>
         <attribute>
             <name>active</name>

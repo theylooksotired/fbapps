@@ -10,7 +10,7 @@
 */
 class AppPdf_Ui extends Ui{
 
-	public function renderSection() {
+	public function renderFrame() {
 		$file = $this->object->getFileUrl('pdf');
 		$fileInfo = explode('.', $file);
 		$extension = end($fileInfo);

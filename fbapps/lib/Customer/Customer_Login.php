@@ -33,7 +33,7 @@ class Customer_Login {
     }
     
     /**
-    * Get the id of the logged user.
+    * Get the id of the logged customer.
     */
     public function id() {
         return $this->get('idCustomer');
@@ -47,14 +47,14 @@ class Customer_Login {
     }
 
     /**
-    * Get the user.
+    * Get the customer.
     */
-    public function user() {
-        if (isset($this->user)) {
-            return $this->user;
+    public function customer() {
+        if (isset($this->customer)) {
+            return $this->customer;
         }
-        $this->user = Customer::read($this->id());
-        return $this->user;
+        $this->customer = Customer::read($this->id());
+        return $this->customer;
     }
     
     /**
@@ -65,15 +65,15 @@ class Customer_Login {
     }
 
     /**
-    * Check if the user is connected.
+    * Check if the customer is connected.
     */
     public function isConnected() {
         return (isset($this->info['idCustomer']) && $this->info['idCustomer']!='') ? true : false;
     }
     
     /**
-    * Check the user login using it's email and password.
-    * If so, it saves the user values in the session.
+    * Check the customer login using it's email and password.
+    * If so, it saves the customer values in the session.
     */
     public function checklogin($options) {
         $values = array();
@@ -81,9 +81,9 @@ class Customer_Login {
         $values['password'] = (isset($options['password'])) ? $options['password'] : '';
         $values['md5password'] = md5($values['password']);
         if ($values['email']!='' && ($values['password']!='' || $values['passwordTemp']!='')) {            
-            $user = Customer::readFirst(array('where'=>'email=:email AND (password=:md5password OR passwordTemp=:password) AND active="1"'), $values);
-            if ($user->id()!='') {
-                $this->autoLogin($user);
+            $customer = Customer::readFirst(array('where'=>'email=:email AND (password=:md5password OR passwordTemp=:password) AND active="1"'), $values);
+            if ($customer->id()!='') {
+                $this->autoLogin($customer);
                 $this->sessionAdjust($this->info);
                 return true;
             } else {
@@ -95,20 +95,17 @@ class Customer_Login {
     }
 
     /**
-    * Automatically login a user.
+    * Automatically login a customer.
     */
-    public function autoLogin($user) {
-        $type = CustomerType::read($user->get('idCustomerType'));
-        $this->info['idCustomer'] = $user->id();
-        $this->info['email'] = $user->get('email');
-        $this->info['label'] = $user->getBasicInfo();
-        $this->info['code'] = $type->get('code');
-        $this->info['idCustomerType'] = $type->id();
+    public function autoLogin($customer) {
+        $this->info['idCustomer'] = $customer->id();
+        $this->info['email'] = $customer->get('email');
+        $this->info['label'] = $customer->getBasicInfo();
         $this->sessionAdjust($this->info);
     }
 
     /**
-    * Eliminate session values and logout a user.
+    * Eliminate session values and logout a customer.
     */
     public function logout() {
         $this->info = array();

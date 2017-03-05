@@ -140,6 +140,12 @@ define('EMAIL', 'info@plasticwebs.com');
 mb_internal_encoding('UTF-8');
 
 /**
+* Facebook Login App
+*/
+define('FACEBOOK_LOGIN_APP_ID', '182759458876787');
+define('FACEBOOK_LOGIN_APP_SECRET', '13c9f99b3840d1b70c91565f1606d962');
+
+/**
 * The framework loads the autoload.php and phpHelper.php files.
 */
 require_once(APP_FILE.'helpers/autoload.php');

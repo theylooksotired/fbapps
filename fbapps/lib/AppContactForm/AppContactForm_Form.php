@@ -10,11 +10,9 @@
 */
 class AppContactForm_Form extends Form{
 
-	public function createContact() {
-		//$this->field('passphrase')
+	public function createHtml() {
 		$fields = '<h2>'.__('appInformation').'</h2>
 					<div class="formFields formFields2">
-						'.$this->field('name').'
 						'.$this->field('linkWeb').'
 						'.$this->field('emailContact').'
 					</div>

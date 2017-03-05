@@ -1,0 +1,14 @@
+.footer {
+	background: darken($colorAccentAlt, 5%);
+	border-top: 20px solid darken($colorAccentAlt, 10%);
+	color: darken($colorAccent, 20%);
+	padding: 30px 15px;
+	font-size: $fontSizeTiny;
+	p {
+		padding: 0;
+		margin: 0;
+	}
+	a {
+		color: darken($colorAccent, 10%);
+	}
+}

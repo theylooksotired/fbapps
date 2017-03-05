@@ -14,6 +14,7 @@ class AppHtmlContent_Form extends Form {
 		$fields = $this->field('title').'
 				'.FormField::create('textarea', array('name'=>'content', 'id'=>'content', 'value'=>$this->values['content'], 'error'=>$this->errors['content']));
 		return Form::createForm($fields, array('submit'=>__('save'), 'class'=>'formPublic')).'
+				<script type="text/javascript" src="'.BASE_URL.'helpers/ckeditor/ckeditor.js"></script>
 				<script>
 					CKEDITOR.replace(\'content\');
 				</script>';

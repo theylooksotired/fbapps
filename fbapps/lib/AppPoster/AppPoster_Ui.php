@@ -10,7 +10,7 @@
 */
 class AppPoster_Ui extends Ui{
 
-	public function renderSection() {
+	public function renderFrame() {
         return '<div class="imageAppPoster">
         			'.$this->object->getImage('poster', 'huge').'
         		</div>';

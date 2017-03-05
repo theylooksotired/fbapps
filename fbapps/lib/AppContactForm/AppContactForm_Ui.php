@@ -10,22 +10,12 @@
 */
 class AppContactForm_Ui extends Ui{
 
-	public function renderContact($options=array()) {
-		$formHtml = (isset($options['formHtml'])) ? $options['formHtml'] : '';
+	public function renderFrame() {
 		$imageUrl = $this->object->getFileUrl('imageLogo');
 		$titleImage = ($imageUrl!='') ? '<img src="'.$imageUrl.'" alt="'.$this->object->getBasicInfo().'"/>' : $this->object->getBasicInfo();
 		$title = ($this->getValue('linkWeb')!='') ? '<a href="'.Url::format($this->getValue('linkWeb')).'" target="_blank">'.$titleImage.'</a>' : $titleImage;
 		$titleMessage = ($this->getValue('titleMessage')!='') ? '<h1>'.$this->getValue('titleMessage').'</h1>' : '';
-		$footerPlastic = '';
-		if ($this->object->get('code')=='') {
-			$app = App::code('contact');
-			$footerPlastic = '<div class="footerPlastic">
-									<div class="footerPlasticIns">
-										<p>Esta aplicacion ha sido creada utilizando los servicios de <a href="https://www.plasticwebs.com/fbapps" target="_blank">Plasticwebs</a>.</p>
-										<p>Puedes adjuntarla a tu pagina haciendo click <a href="'.$app->linkApp().'" target="_blank">aqui</a>.</p>
-									</div>
-								</div>';
-		}
+		$form = new AppContactFormMessage_Form();
 		return $this->renderContactStyle().'
 				<div class="contact contact-'.$this->getValue('code').'">
 					<div class="contactWrapper">
@@ -37,14 +27,13 @@ class AppContactForm_Ui extends Ui{
 						</header>
 						<section>
 							'.$titleMessage.'
-							'.$formHtml.'
+							'.$form->createPublic($this->object).'
 						</section>
 						<footer>
 							<div class="footerIns">'.nl2br($this->getValue('footer')).'</div>
 						</footer>
 					</div>
-				</div>
-				'.$footerPlastic;
+				</div>';
 	}
 
 	public function renderContactStyle() {

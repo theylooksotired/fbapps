@@ -14,25 +14,26 @@ class Customer_Form extends Form{
         $fields = $this->field('email').'
                     '.$this->field('password');
         return '<div class="simpleForm">
-                    <p>'.__('loginMessage').'</p>
-                    '.Form::createForm($fields, array('action'=>url('conectarse'), 'class'=>'formAdmin', 'submit'=>__('send'))).'
-                    <p><a href="'.url('olvide-password').'">'.__('passwordForgot').'</a></p>
+                    <div class="message">'.__('loginMessage').'</div>
+                    '.Form::createForm($fields, array('action'=>url('cuenta/conectarse'), 'class'=>'formAdmin', 'submit'=>__('send'))).'
+                    '.$this->loginFacebookButton().'
+                    <div class="options"><a href="'.url('cuenta/olvide-password').'">'.__('passwordForgot').'</a></div>
                 </div>';
     }
 
     public function forgot() {
         $fields = $this->field('email');
         return '<div class="simpleForm">
-                    <p>'.__('passwordForgotMessage').'</p>
-                    '.Form::createForm($fields, array('action'=>url('olvide-password'), 'class'=>'formAdmin', 'submit'=>__('send'))).'
-                    <p><a href="'.url('contectarse').'">'.__('tryLoginAgain').'</a></p>
+                    <div class="message">'.__('passwordForgotMessage').'</div>
+                    '.Form::createForm($fields, array('action'=>url('cuenta/olvide-password'), 'class'=>'formAdmin', 'submit'=>__('send'))).'
+                    <div class="options"><a href="'.url('cuenta/conectarse').'">'.__('tryLoginAgain').'</a></div>
                 </div>';
     }
 
     public function forgotSent() {
         return '<div class="simpleForm">
                     <div class="message">'.__('passwordSentMail').'</div>
-                    <p><a href="'.url('conectarse').'">'.__('tryLoginAgain').'</a></p>
+                    <div class="options"><a href="'.url('cuenta/conectarse').'">'.__('tryLoginAgain').'</a></div>
                 </div>';
     }
 
@@ -40,8 +41,8 @@ class Customer_Form extends Form{
         $fields = $this->field('email').'
                 '.FormField_Password::create(array('label'=>__('password'), 'name'=>'password', 'error'=>$this->errors['oldPassword'], 'value'=>''));
         return '<div class="simpleForm">
-                    <p>'.__('passwordTempMessage').'</p>
-                    '.Form::createForm($fields, array('action'=>url('actualizar-password'), 'class'=>'formAdmin', 'submit'=>__('send'))).'
+                    <div class="message">'.__('passwordTempMessage').'</div>
+                    '.Form::createForm($fields, array('action'=>url('cuenta/actualizar-password'), 'class'=>'formAdmin', 'submit'=>__('send'))).'
                 </div>';
     }
 
@@ -50,8 +51,8 @@ class Customer_Form extends Form{
         $fields = FormField_Password::create(array('label'=>__('oldPassword'), 'name'=>'oldPassword', 'error'=>$this->errors['oldPassword'], 'value'=>'')).'
                 '.FormField_Password::create(array('label'=>__('password'), 'name'=>'password', 'error'=>$this->errors['oldPassword'], 'value'=>''));
         return '<div class="simpleForm">
-                    <p>'.__('changePasswordMessage').'</p>
-                    '.Form::createForm($fields, array('action'=>url('mi-cuenta-password'), 'class'=>'formAdmin', 'submit'=>__('save'))).'
+                    <div class="message">'.__('changePasswordMessage').'</div>
+                    '.Form::createForm($fields, array('action'=>url('cuenta/mi-cuenta-password'), 'class'=>'formAdmin', 'submit'=>__('save'))).'
                 </div>';
     }
 
@@ -62,10 +63,6 @@ class Customer_Form extends Form{
         } else {        
             if ($user->get('passwordTemp')!='' && $this->values['oldPassword']!=$user->get('passwordTemp')) {
                 $errors['oldPassword'] = __('oldPasswordError');
-            } else {
-                if (md5($this->values['oldPassword'])!=$user->get('password')) {
-                    $errors['oldPassword'] = __('oldPasswordError');
-                }
             }
         }
         $errors = array_merge($errors, $this->isValidField($this->object->attributeInfo('password')));
@@ -74,24 +71,25 @@ class Customer_Form extends Form{
 
     public function createAccount() {
         $fields = $this->field('name').'
+                '.$this->field('lastName').'
                 '.$this->field('email').'
                 '.$this->field('password');
         return '<div class="simpleForm">
-                    <p>'.__('createAccountMessage').'</p>
-                    '.Form::createForm($fields, array('action'=>url('crear-cuenta'), 'class'=>'formAdmin', 'submit'=>__('save'))).'
-                    <div class="fb-login-button" data-max-rows="1" data-size="medium" data-show-faces="false" data-auto-logout-link="false"></div>
+                    <div class="message">'.__('createAccountMessage').'</div>
+                    '.Form::createForm($fields, array('action'=>url('cuenta/crear-cuenta'), 'class'=>'formAdmin', 'submit'=>__('createAccount'))).'
+                    '.$this->loginFacebookButton().'
                 </div>';
     }
 
     public function myAccount() {
-        $fields = $this->field('image').'
-                '.$this->field('email').'
+        $fields = $this->field('email').'
                 '.$this->field('name').'
+                '.$this->field('lastName').'
                 '.$this->field('telephone').'
                 '.$this->field('address');
         return '<div class="simpleForm">
-                    <p>'.__('myAccountMessage').'</p>
-                    '.Form::createForm($fields, array('action'=>url('mi-cuenta-informacion'), 'class'=>'formAdmin', 'submit'=>__('save'))).'
+                    <div class="message">'.__('myAccountMessage').'</div>
+                    '.Form::createForm($fields, array('action'=>url('cuenta/informacion-personal'), 'class'=>'formAdmin', 'submit'=>__('save'))).'
                 </div>';
     }
 
@@ -105,6 +103,16 @@ class Customer_Form extends Form{
             }            
         }
         return $errors;
+    }
+
+    public function loginFacebookButton() {
+        $fb = Navigation_Controller::getFacebookObject();
+        $helper = $fb->getRedirectLoginHelper();
+        $permissions = ['email'];
+        $loginUrl = $helper->getLoginUrl(url('cuenta/conectarse-facebook'), $permissions);
+        return '<div class="facebookLogin">
+                        <a href="' . htmlspecialchars($loginUrl) . '">'.__('loginWithFacebook').'</a>
+                    </div>';
     }
     
 }

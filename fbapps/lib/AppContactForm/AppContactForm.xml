@@ -15,7 +15,7 @@
 			<modified>true</modified>
 		</sql>
 		<form>
-			<title>clients</title>
+			<title>appContactForm</title>
 			<orderBy>code</orderBy>
             <label>#name</label>
 			<templateItemAdmin>
@@ -30,7 +30,7 @@
             <type>id-autoincrement</type>
         </attribute>
         <attribute>
-            <name>idCustomer</name>
+            <name>pageId</name>
             <type>hidden</type>
         </attribute>
         <attribute>

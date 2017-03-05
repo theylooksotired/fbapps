@@ -31,9 +31,8 @@
             <type>id-autoincrement</type>
         </attribute>
         <attribute>
-            <name>idClient</name>
-            <type>select</type>
-            <refObject>Client</refObject>
+            <name>idAppContactForm</name>
+            <type>linkid-autoincrement</type>
         </attribute>
         <attribute>
             <name>name</name>

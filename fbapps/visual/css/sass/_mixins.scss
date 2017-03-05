@@ -77,6 +77,12 @@
     border-radius: $radius;
 }
 
+@mixin buttonShadow() {
+    moz-box-shadow: 2px 2px 4px rgba($black, 0.4);
+    -webkit-box-shadow: 2px 2px 4px rgba($black, 0.4);
+    box-shadow: 2px 2px 4px rgba($black, 0.4);
+}
+
 @mixin simpleShadow() {
     moz-box-shadow: 0px 0px 10px rgba($black, 0.3);
     -webkit-box-shadow: 0px 0px 10px rgba($black, 0.3);

@@ -13,11 +13,14 @@
             <primary>idAppPdf</primary>
         </sql>
         <form>
-            <title>pdfs</title>
+            <title>appPdfs</title>
             <orderBy>title</orderBy>
             <label>#title</label>
             <templateItemAdmin>
-                <p class="accent"><strong>#title</strong></p>
+                <p class="accent">
+                    <span class="small">#pageId</span> | 
+                    <strong>#title</strong>
+                </p>
             </templateItemAdmin>
         </form>
     </info>
@@ -27,7 +30,7 @@
             <type>id-autoincrement</type>
         </attribute>
         <attribute>
-            <name>idCustomer</name>
+            <name>pageId</name>
             <type>hidden</type>
         </attribute>
         <attribute>

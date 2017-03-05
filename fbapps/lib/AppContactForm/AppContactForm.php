@@ -10,13 +10,5 @@
 */
 class AppContactForm extends Db_Object {
 
-	public function secret() {
-		return md5('plasticwebs-contact-'.$this->id());
-	}
-
-	static public function readSecret($md5) {
-		return AppContactForm::readFirst(array('where'=>'MD5(CONCAT("plasticwebs-contact-",idAppContactForm))="'.$md5.'"'));
-	}
-
 }
 ?>

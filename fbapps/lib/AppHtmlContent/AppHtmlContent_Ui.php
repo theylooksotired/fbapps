@@ -10,7 +10,7 @@
 */
 class AppHtmlContent_Ui extends Ui{
 
-	public function renderSection() {
+	public function renderFrame() {
         return '<div class="pageComplete">'.$this->object->get('content').'</div>';
     }
 
