@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+* @structure Banner
+*
+* @author Leano Martinet <info@asterion-cms.com>
+* @package Asterion
+* @version 3.0.1
+-->
+<object>
+	<name>Banner</name>
+	<info>
+		<sql>
+			<primary>idBanner</primary>
+			<order>true</order>
+		</sql>
+		<form>
+			<title>banners</title>
+			<orderBy>ord</orderBy>
+			<templateItemAdmin>
+                <p class="image">#image</p>
+                <p class="accent"><strong>#title</strong></p>
+            </templateItemAdmin>
+		</form>
+	</info>
+	<attributes>
+		<attribute>
+            <name>idBanner</name>
+            <type>id-autoincrement</type>
+        </attribute>
+        <attribute>
+            <name>image</name>
+            <label>image</label>
+            <type>file</type>
+            <mode>image</mode>
+        </attribute>
+        <attribute>
+            <name>title</name>
+            <label>title</label>
+            <lang>true</lang>
+            <required>notEmpty</required>
+            <type>text-long</type>
+        </attribute>
+        <attribute>
+            <name>content</name>
+            <label>content</label>
+            <lang>true</lang>
+            <type>textarea-ck</type>
+        </attribute>
+	</attributes>
+</object>

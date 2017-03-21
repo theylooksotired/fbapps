@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<object>
+    <name>Site</name>
+    <info>
+        <sql>
+            <primary>idSite</primary>
+            <order>true</order>
+        </sql>
+        <form>
+            <title>sites</title>
+            <orderBy>ord</orderBy>
+            <label>#title</label>
+            <templateItemAdmin>
+                <p class="image">#image</p>
+                <p class="accent"><strong>#title</strong></p>
+                <p class="tiny">#link</p>
+                <p class="tiny">#description</p>
+            </templateItemAdmin>
+        </form>
+    </info>
+    <attributes>
+        <attribute>
+            <name>idSite</name>
+            <type>id-autoincrement</type>
+        </attribute>
+        <attribute>
+            <name>image</name>
+            <label>image</label>
+            <type>file</type>
+            <mode>image</mode>
+        </attribute>
+        <attribute>
+            <name>title</name>
+            <label>title</label>
+            <required>notEmpty</required>
+            <type>text-long</type>
+        </attribute>
+        <attribute>
+            <name>link</name>
+            <label>link</label>
+            <type>text-long</type>
+        </attribute>
+        <attribute>
+            <name>description</name>
+            <label>description</label>
+            <lang>true</lang>
+            <type>textarea</type>
+        </attribute>
+    </attributes>
+    <indexes>
+        <index>
+            <name>titleUrl</name>
+            <fields>titleUrl</fields>
+        </index>
+        <index>
+            <name>search</name>
+            <fields>title,titleUrl,description</fields>
+            <type>FULLTEXT</type>
+        </index>
+    </indexes>
+</object>

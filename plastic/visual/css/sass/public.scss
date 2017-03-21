@@ -1,0 +1,1197 @@
+@import "_reset.scss";
+
+@import "_variables.scss";
+@import "_common.scss";
+@import "_mixins.scss";
+
+@import "_public_header.scss";
+@import "_public_menu.scss";
+@import "_public_footer.scss";
+@import "_public_sidebar.scss";
+
+html,
+body {
+	font-size: 1rem;
+	font-family: $fontFamily;
+}
+
+.anchor {
+	position:relative;
+	top:-150px;
+}
+
+.contact {
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+	header {
+		@include clearer();
+		padding: 10px;
+		a {
+			color: inherit;
+		}
+		.headerIns {
+			font-size: $fontSizeSmall;
+			max-width: $sizeTablet;
+			margin: auto;
+		}
+		.logo {
+			width: 30%;
+			float: left;
+			text-align: left;
+			img {
+				max-width: 100%;
+				max-height: 50px;
+			}
+		}
+		.headerInfo {
+			width: 65%;
+			float: right;
+			text-align: right;
+		}
+	}
+	footer {
+		padding: 30px 10px;
+		a {
+			color: inherit;
+		}
+		.footerIns {
+			font-size: $fontSizeTiny;
+			text-align: center;
+			max-width: $sizeTablet;
+			margin: auto;
+		}
+	}
+	.message {
+		margin: 50px 0;
+		padding: 30px;
+		text-align: center;
+		font-weight: bold;
+	}
+
+	section {
+		max-width: $sizeTablet;
+		margin: auto;
+		margin: 20px auto;
+		padding: 20px;
+		background: rgba($white, 0.9);
+		border: 3px solid rgba($black, 0.1);
+		@include borderBox();
+		h1 {
+			font-size: $fontSizeBig;
+			font-weight: bold;
+			margin: 0 0 15px 0;
+			padding: 0 0 15px 0;
+		}
+		.formContact {
+			.formField {
+				margin: 0 0 20px 0;
+				label {
+					display: block;
+					font-size: $fontSizeSmall;
+					text-transform: uppercase;
+					padding: 0 0 5px 0;
+					font-weight: bold;
+				}
+				input,
+				select,
+				textarea {
+					display: block;
+					padding: 5px;
+					border: 1px solid darken($white, 30%);
+					background: $white;
+					font-family: $fontFamily;
+					width: 100%;
+					@include borderRadius(3px);
+				}
+				&.error {
+					input,
+					select,
+					textarea {
+						border: 1px solid $colorError;
+					}
+				}
+			}
+			.error {
+				font-size: $fontSizeTiny;
+				font-weight: bold;
+				display: block;
+				padding: 0 0 3px 0;
+				color: $colorError;
+			}
+			input.formSubmit {
+				width: 200px;
+				display: block;
+				margin: auto;
+				padding: 10px;
+				text-align: center;
+				font-family: $fontFamily;
+				font-weight: bold;
+				text-transform: uppercase;
+				border: 0;
+				cursor: pointer;
+				@include borderRadius(3px);
+				&:hover {
+					opacity: 0.8;
+				}
+			}
+			.formFields {
+				@include clearer();
+				&.formFields2 {
+					.formField {
+						width: 50%;
+						float: left;
+						padding-right: 20px;
+						@include borderBox();
+						@include clearer();
+						&:last-child {
+							padding-right: 0;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.imagePoster {
+	text-align: center;
+	img {
+		display: block;
+		margin: auto;
+		max-width: 100%;
+	}
+}
+
+
+.contentAdmin {
+	padding: 0 0 20px 0;
+	.contentAdminIns {
+		a {
+			display: block;
+			max-width: $sizeTablet;
+			margin: auto;
+			padding: 20px;
+			background: $white;
+			border: 2px solid $colorAccent;
+			color: $colorAccent;
+			text-align: center;
+			font-weight: normal;
+			@include borderBox();
+			&:hover {
+				background: rgba($colorAccent, 0.1);
+			}
+		}
+	}
+}
+
+.footerPlastic {
+	background: darken($white, 5%);
+	color: $colorText;
+	font-size: $fontSizeSmall;
+	.footerPlasticIns {
+		max-width: $sizeTablet;
+		padding: 20px 0;
+		margin: auto;
+		text-align: center;
+		@include borderBox();
+		p {
+			padding: 5px 0;
+		}
+		a {
+			color: $colorAccent;
+		}
+	}
+}
+
+.bodySite {
+	background: lighten($colorAccentAlt, 10%);
+	&.bodySiteIntro {
+		background: $white;
+		.contentFormat {
+			padding: 0;
+			.content {
+				max-width: 100%;
+			}
+		}
+	}
+	.menu {
+		float: left;
+		margin-left: 20px;
+		@include clearer();
+		.menuItem {
+			font-weight: bold;
+			color: $white;
+			cursor: pointer;
+			float: left;
+			margin-right: 30px;
+			text-transform: uppercase;
+			padding-top: 10px;
+			font-family: $fontFamilyAlt;
+		}
+		.menuItem a {
+			color: $white;
+			font-weight: normal;
+		}
+		.menuItem a:hover {
+			color: $colorAccentAlt;
+		}
+	}
+	.contentFormat {
+		.contentFormatIns {
+			padding: 80px 0 0 0;
+		}
+		.content {
+			max-width: $sizeDesktop;
+			margin: auto;
+		}
+	}
+	h1 {
+		font-size: $fontSizeHuge;
+		text-transform: uppercase;
+		font-family: $fontFamilyAlt;
+		font-weight: bold;
+		color: $colorAccent;
+		padding: 30px 0 50px 0;
+		position: relative;
+		&:before {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 50%;
+			height: 15px;
+			background: rgba($colorAccent, 0.2);
+			border-top: 5px solid rgba($colorAccent, 0.2);
+			content: '';
+		}
+	}
+}
+.pageTitle {
+	position: relative;
+	margin: auto;
+	margin-bottom: 80px; 
+	text-transform: uppercase;
+	text-align: center;
+	font-weight: bold;
+	font-family: $fontFamilyAlt;
+	h3 {
+		display: inline;
+		padding: 15px 5px;
+		background: $white;
+		border: 5px solid $colorAccent;
+		font-size: $fontSizeLarge;
+		word-spacing: 0.6em;
+		span {
+			background: $colorAccent;
+			padding: 10px 30px;
+			font-weight: normal;
+			color: $white;
+		}
+	}
+}
+.pageIntro {
+	padding: 80px 20px 40px 20px;
+	max-width: $sizeTablet;
+	margin: auto;
+	background: $white;
+	.pageIns {
+		@include clearer();
+	}
+	.pageIntroLeft {
+		width: 25%;
+		float: left;
+		.logo{
+			width:100%;
+			height: 200px;
+			background-image: url(../../img/logo.jpg);
+			background-repeat: no-repeat;
+			background-size: contain;
+			background-position: top center;
+			text-align: left;
+			text-indent: -5000px;
+		}
+	}
+	.pageIntroRight {
+		width: 70%;
+		float: right;
+		color: darken($colorAccent, 3%);
+		font-size: $fontSizeBig;
+		p {
+			line-height: 1.4em;
+		}
+		strong {
+			color: darken($colorAccent, 5%);
+		}
+		a {
+			color: darken($colorAccent, 10%);
+			&:hover {
+				color: darken($colorAccent, 20%);
+			}
+		}
+		h2{
+			color: $colorText;
+			padding-bottom: 30px;
+			font-size: $fontSizeLarge;
+			font-weight: bold;
+			text-transform: none;
+			font-family: $fontFamilyAlt;
+			text-transform: uppercase;
+			padding: 0 30% 0 0;
+			line-height: 1.2em;
+		}
+	}
+}
+.pageApplications {
+	background: $colorAccentAlt;
+	padding: 50px 0 100px 0;
+}
+.apps {
+	max-width: $sizeDesktop;
+	margin: auto;
+	@include clearer();
+	.app {
+		width:33.33%;
+		float: left;
+	}
+	.appIns {
+		margin: 15px 15px 120px 15px;
+		position: relative;
+		text-align: center;
+		@include borderBox();
+	}
+	.appImage {
+		height: 200px;
+		background-size: cover;
+		background-position: center center;
+		background-repeat: no-repeat;
+	}
+	.appText {
+		position: absolute;
+		background: rgba($colorText, 0.2);
+		top:0px;
+		left:0px;
+		right: 0px;
+		bottom: 0px;
+		padding: 0;
+	}
+	h3 {
+		font-family: $fontFamilyAlt;
+		font-size: $fontSizeBig;
+		text-transform: uppercase;
+		padding: 15px 10px;
+		background: $colorText;
+		color: $white;
+		text-shadow: 0 0 4px darken($colorText, 10%);
+	}
+	p {
+		display: block;
+		position: absolute;
+		bottom: -60px;
+		left: 0;
+		right: 0;
+		padding: 10px !important;
+		color: darken($colorAccent, 15%);
+		font-weight: normal;
+	}
+	a:hover {
+		.appText {
+			background: transparent;
+		}
+		h3 {
+			background: darken($colorAccent, 10%);
+		}
+		p {
+			color: lighten($colorText, 20%)!important;
+		}
+	}
+}
+.linkMobile {
+	background: rgba($colorAccentAlt, 0.8);
+	padding: 10px;
+	text-align: right;
+	font-size: $fontSizeTiny;
+	color: $colorAccent;
+	a {
+		display: block;
+		color: $colorAccent;
+	}
+}
+.formPublic {
+	margin: 0 auto 20px auto;
+	padding: 20px;
+	background: rgba($white, 0.8);
+	border: 3px solid rgba($colorAccentAlt, 0.8);
+	h2 {
+		font-size: $fontSizeBig;
+		font-family: $fontFamilyAlt;
+		color: $colorText;
+		padding: 15px 0;
+		margin: 15px 0;
+		position: relative;
+		border-top: 5px solid rgba($colorAccentAlt, 0.4);
+		&:first-child {
+			padding: 0 0 15px 0;
+			margin: 0 auto 15px auto;
+			border: 0;
+		}
+	}
+	.formField {
+		margin: 0 0 20px 0;
+		label {
+			color: darken($colorAccent, 10%);
+			display: block;
+			font-size: $fontSizeSmall;
+			padding: 0 0 5px 0;
+			font-weight: bold;
+		}
+		input,
+		select,
+		textarea {
+			color: $colorText;
+			display: block;
+			padding: 5px;
+			border: 1px solid darken($white, 30%);
+			background: $white;
+			font-family: $fontFamily;
+			width: 100%;
+			@include borderRadius(3px);
+		}
+		&.color input {
+			margin: 0;
+			padding: 0;
+			border: 0;
+			width: 100%;
+			height: 30px;
+			cursor: pointer;
+		}
+		&.error {
+			input,
+			select,
+			textarea {
+				border: 1px solid $colorError;
+			}
+		}
+		.formFieldsFile {
+			a {
+				display: block;
+				font-size: $fontSizeTiny;
+				text-decoration: underline;
+				color: $colorAccent;
+				padding: 5px 0 0 0;
+				&:hover {
+					color: darken($colorAccent, 20%);
+				}
+			}
+		}
+	}
+	.error {
+		font-size: $fontSizeTiny;
+		font-weight: bold;
+		display: block;
+		padding: 0 0 3px 0;
+		color: $colorError;
+	}
+	input.formSubmit {
+		background: $colorAccent;
+		color: $white;
+		width: 200px;
+		display: block;
+		margin: auto;
+		padding: 10px;
+		text-align: center;
+		font-family: $fontFamily;
+		font-weight: bold;
+		text-transform: uppercase;
+		border: 0;
+		cursor: pointer;
+		@include borderRadius(3px);
+		&:hover {
+			background: darken($colorAccent, 10%);
+		}
+	}
+	.formFields {
+		@include clearer();
+		&.formFields2,
+		&.formFields3 {
+			.formField {
+				width: 50%;
+				float: left;
+				padding-right: 20px;
+				@include borderBox();
+				@include clearer();
+				&:last-child {
+					padding-right: 0;
+				}
+			}
+		}
+		&.formFields3 {
+			.formField {
+				width: calc(100% / 3);
+			}
+		}
+	}
+	.formHelp {
+		color: lighten($colorAccent, 5%);
+		font-size: $fontSizeSmall;
+		padding: 10px 0 20px 0;
+	}
+	.videosExtra {
+		padding: 10px 0 0 0;
+		margin: 50px 0 0 0;
+		border-top: 5px solid rgba($colorAccentAlt, 0.5);
+	}
+}
+.message {
+	max-width: $sizeTablet;
+	margin: 20px auto;
+	padding: 20px;
+	background: $colorAccentAlt;
+	border: 3px solid darken($colorAccentAlt, 10%);
+	color: $colorText;
+	text-align: center;
+	font-weight: bold;
+	a {
+		color: $colorText;
+		text-decoration: underline;
+	}
+	&.messageError {
+		background: $colorError;
+		color: $white;
+		border: 3px solid darken($colorError, 5%);
+	}
+}
+
+.imageVideos {
+	display: table;
+	width: 100%;
+	table-layout: fixed;
+	.imageVideo {
+		display: table-cell;
+		vertical-align: middle;
+		text-align: center;
+		padding: 10px;
+		&:first-child {
+			padding: 10px 10px 10px 0;
+		}
+		&:last-child {
+			padding: 10px 0 10px 10px;
+		}
+		a {
+			display: block;
+			img {
+				width: 100%;
+			}
+			&:hover {
+				img {
+					opacity: 0.7;
+				}
+			}
+		}
+	}
+}
+
+.simpleForm {
+	max-width: 500px;
+	margin: 0 auto 50px auto;
+	padding: 30px;
+	background: lighten($colorAccentAlt, 15%);
+	@include borderRadius(5px);
+	@include borderBox();
+	p {
+		font-size: $fontSizeNormal;
+		padding: 0 0 15px 0;
+		color: lighten($colorText, 10%);
+		&:last-child {
+			padding: 0;
+		}
+	}
+	.formField {
+		padding: 0 0 15px 0;
+		label {
+			display: block;
+			font-size: $fontSizeSmall;
+			text-transform: uppercase;
+			color: $colorText;
+			padding: 0 0 5px 0;
+			font-weight: bold;
+		}
+		input,
+		select,
+		textarea {
+			display: block;
+			padding: 5px;
+			background: $white;
+			border: 1px solid lighten($colorText, 30%);
+			color: $colorText;
+			font-family: $fontFamily;
+			width: 100%;
+		}
+		&.error {
+			input,
+			select,
+			textarea {
+				border: 1px solid $colorError;
+			}
+		}
+		.error {
+			font-size: $fontSizeSmall;
+			font-weight: bold;
+			color: $colorError;
+			display: block;
+			padding: 0 0 5px 0;
+		}
+	}
+	input.formSubmit {
+		display: block;
+		width: 100%;
+		padding: 10px 30px;
+		background: darken($colorAccent, 10%);
+		margin: 10px auto 0 auto;
+		cursor: pointer;
+		text-align: center;
+		font-family: $fontFamily;
+		font-weight: bold;
+		font-size: $fontSizeNormal;
+		color: $white;
+		border: 0px;
+		text-transform: uppercase;
+		line-height: 1em;
+		@include borderRadius(5px);
+		&:hover {
+			background: darken($colorAccent, 20%);
+		}
+	}
+	.message {
+		max-width: auto;
+		margin: 0 0 40px 0;
+		padding: 0;
+		font-weight: normal;
+		color: darken($colorAccent, 15%);
+		border: 0;
+		background: transparent;
+	}
+	.options {
+		margin: 10px 0 0 0;
+		a {
+			display: block;
+			text-align: center;
+			padding: 10px 30px;
+			margin: 0 0 10px 0;
+			color: darken($colorAccent, 10%);
+			background: rgba($colorAccent, 0.1);
+			font-size: $fontSizeNormal;
+			@include borderRadius(5px);
+			&:last-child {
+				margin: 0;
+			}
+			&:hover {
+				background: rgba($colorAccent, 0.2);
+				color: $colorAccent;
+			}
+		}
+	}
+	.facebookLogin {
+		a {
+			display: block;
+			margin: 40px 0 10px 0;
+			background: $colorFacebook;
+			color: $white;
+			padding: 10px 30px;
+			@include borderRadius(5px);
+			text-transform: uppercase;
+			text-align: center;
+			position: relative;
+			line-height: 1em;
+			font-size: $fontSizeNormal;
+			@include iconBeforeAbsolute($icon-facebook, $paddingLeft: 1.2em, $top: 10px, $left: 10px);
+			&:hover {
+				background: darken($colorFacebook, 10%);
+			}
+		}
+	}
+}
+.pageSimple {
+	padding: 100px 10px 50px 10px;
+	max-width: $sizeTablet;
+	margin: auto;
+	&.pageSimple-como-instalar {
+		p {
+			strong {
+				display: block;
+				font-size: $fontSizeBig;
+				font-weight: bold;
+				padding: 20px 0 0 0;
+				color: $colorAccent;
+				position: relative;
+				&:before {
+					position: absolute;
+					top: 0;
+					left: 0;
+					content: '';
+					width: 60%;
+					height: 3px;
+					background: $colorAccentAlt;
+				}
+			}
+		}
+	}
+	&.pageSimple-costo {
+		h2 {
+			color: darken($colorAccent, 15%);
+			line-height: 1.4em;
+			font-weight: normal;
+			font-size: $fontSizeBig;
+			padding: 0 0 20px 0;
+			strong {
+				display: inline-block;
+				padding: 10px;
+				background: lighten($colorAccentAlt, 5%);
+				font-size: $fontSizeLarge;
+			}
+		}
+	}
+}
+a.btnBig {
+	display: block;
+	margin: 20px auto;
+	background: darken($colorAccent, 10%) !important;
+	border: 2px solid darken($colorAccent, 15%);
+	color: $white !important;
+	padding: 15px 20px 18px 20px;
+	max-width: 300px;
+	font-size: $fontSizeLarge;
+	font-weight: normal;
+	text-transform: uppercase;
+	text-align: center;
+	position: relative;
+	line-height: 1em;
+	font-family: $fontFamilyAlt;
+	@include borderRadius(3px);
+	@include buttonShadow();
+	&:hover {
+		border: 2px solid darken($colorAccent, 20%) !important;
+		background: darken($colorAccent, 15%) !important;
+	}
+}
+
+.contentFormatAccount {
+	.content {
+		@include clearer();
+		.contentLeft {
+			float: left;
+			width: 20%;
+		}
+		.contentRight {
+			float: right;
+			width: 78%;
+		}
+	}
+	.sidebarMenu {
+		padding: 0 0 70px 0;
+		border-right: 4px solid rgba($colorAccent, 0.1);
+		.sidebarMenuItem {
+			a {
+				display: block;
+				padding: 10px;
+				background: rgba($colorAccent, 0.1);
+				color: $colorText;
+				font-weight: bold;
+				border-bottom: 2px solid lighten($colorAccentAlt, 10%);
+				font-weight: normal;
+				font-size: $fontSizeSmall;
+				text-transform: uppercase;
+				&:hover {
+					background: rgba($colorAccent, 0.2);
+					color: darken($colorText, 10%);
+				}
+			}
+		}
+		.sidebarMenuItemPersonal {
+			a {
+				background: rgba($colorAccent, 0.15);
+			}
+		}
+		.sidebarMenuItemLogout {
+			a {
+				background: rgba(desaturate($colorAccent, 30%), 0.1);	
+				color: lighten($colorText, 20%);
+			}
+		}
+	}
+	.accountAppsExtra {
+		padding: 100px 0 0 0;
+	}
+	.accountApp {
+		padding: 20px;
+		margin: 0 0 30px 0;
+		background: rgba($colorAccentAlt, 0.4);
+		border: 1px solid rgba($colorAccentAlt, 0.8);
+		.message {
+			background: transparent;
+			padding: 0;
+			border: 0;
+			margin: 10px 0;
+			color: $colorAccent;
+		}
+		.fbPage {
+			a {
+				display: block;
+				font-size: $fontSizeBig;
+				color: darken($colorAccent, 20%);
+				padding: 0 0 10px 0;
+				span {
+					color: darken($colorAccent, 5%);
+					display: block;
+					font-size: $fontSizeNormal;
+					font-weight: normal;
+				}
+			}
+		}
+	}
+	.accountPageApp {
+		padding: 10px;
+		margin: 0 0 10px 0;
+		background: rgba($white, 0.2);
+		font-size: $fontSizeNormal;
+		span {
+			color: lighten($colorText, 10%);
+			display: block;
+			font-size: $fontSizeSmall;
+		}
+		@include borderRadius(3px);
+		@include clearer();
+		&:last-child {
+			margin: 0;
+		}
+		.accountPageAppTitle {
+			width: 60%;
+			float: left;
+			p {
+				color: $colorText;
+				em {
+					display: block;
+					padding: 5px 0 0 0;
+					font-style: italic;
+					color: $colorAccent;
+					font-size: $fontSizeTiny;
+				}
+			} 
+		}
+		.accountPageAppOptions {
+			width: 40%;
+			float: right;
+			text-align: right;
+			a {
+				display: inline-block;
+				padding: 3px 10px 5px 10px;
+				margin: 0 0 0 10px;
+				background: darken($colorAccent, 5%);
+				color: $white;
+				font-weight: bold;
+				@include buttonShadow();
+				@include borderRadius(3px);
+				&:hover {
+					background: darken($colorAccent, 15%);
+				}
+			}
+		}
+	}
+	.fbPageInfo {
+		margin: 0;
+		padding: 10px 20px;
+		background: rgba($colorAccentAlt, 0.7);
+		border: 3px solid rgba($colorAccentAlt, 0.8);
+		border-bottom: 0;
+		font-size: $fontSizeNormal;
+		p {
+			a {
+				display: inline-block;
+				padding: 0 0 10px 0;
+				color: $colorText;
+				font-size: $fontSizeSmall;
+				color: darken($colorAccent, 20%);
+				span {
+					font-weight: normal;
+					font-size: $fontSizeTiny;
+					color: darken($colorAccent, 10%);
+				}
+			}
+			strong {
+				color: darken($colorAccent, 5%);
+				display: inline-block;
+				font-size: $fontSizeSmall;
+				width: 200px;
+				text-transform: uppercase;
+			}
+		}
+	}
+}
+
+.appComplete {
+	max-width: $sizeTablet;
+	margin: auto;
+	padding: 20px 0;
+	@include clearer();
+	.appCompleteLeft {
+		width: 25%;
+		float: left;
+		img {
+			border: 5px solid $white;
+			width: 100%;
+		}
+	}
+	.appCompleteRight {
+		width: 70%;
+		float: right;
+		font-size: $fontSizeBig;
+		line-height: 1.2em;
+		color: darken($colorAccent, 20%);
+		strong {
+			color: darken($colorAccent, 10%);
+		}
+		p {
+			padding: 0 0 1em;
+		}
+	}
+}
+.messagePayment {
+	text-align: center;
+	font-size: $fontSizeNormal;
+	color: darken($colorAccent, 10%);
+	max-width: $sizeTablet;
+	margin: 10px auto;
+	padding: 20px;
+	background: rgba($colorAccent, 0.1);
+	@include borderRadius(5px);
+	p {
+		padding: 0 0 10px 0;
+		margin: 0;
+	}
+	strong {
+		font-size: $fontSizeBig;
+		color: darken($colorAccent, 15%);
+	}
+	.btnBig {
+		margin: 20px auto 0 auto;
+		font-size: $fontSizeBig;
+	}
+}
+
+.payment {
+	padding: 15px;
+	background: rgba($white, 0.6);
+	border: 1px solid rgba($white, 0.8);
+	margin: 0 0 20px;
+	color: darken($colorAccent, 20%);
+	@include clearer();
+	h2 {
+		color: darken($colorAccent, 30%);
+		font-weight: bold;
+	}
+	p {
+		padding: 5px 0 0 0;
+		font-style: italic;
+	}
+	.paymentLeft {
+		width: 65%;
+		float: left;
+	}
+	.paymentRight {
+		width: 30%;
+		float: right;
+	}
+}
+.money {
+	font-size: $fontSizeBig;
+	color: $colorAccent;
+	font-weight: bold;
+	text-align: right;
+	span {
+		font-size: $fontSizeNormal;
+		font-weight: normal;
+	}
+}
+
+.banner {
+	.bannerIns {
+		height: 700px;
+		position: relative;
+		&:before {
+			position: absolute;
+			top: 20px;
+			left: 0;
+			right: 0;
+			top: 40%;
+			content: '';
+			height: 60px;
+			background: rgba($colorText, 0.5);	
+		}
+	}
+	.bannerImage {
+		height: 700px;
+		background-size: cover;
+		background-position: center center;
+		background-repeat: no-repeat;
+	}
+	.bannerText {
+		position: absolute;
+		background: $colorAccent;
+		color: $white;
+		padding: 15px 15px 20px 15px;
+		line-height: 1em;
+		border: 5px solid $white;
+		text-align: center;
+		text-transform: uppercase;
+		bottom: 50%;
+		left: 0;
+		right: 0;
+		max-width: 400px;
+		margin: auto;
+		font-family: $fontFamilyAlt;
+		font-size: $fontSizeLarge;
+		@include simpleShadow();
+	}
+}
+
+.contactPublic {
+	max-width: $sizeDesktop;
+	padding-left: 20px;
+	padding-right: 20px;
+	margin: auto;
+	@include clearer();
+	p {
+		padding-bottom: 20px;
+	}
+	.contactRight {
+		width: 70%;
+		float: right;
+	}
+	.contactLeft {
+		width: 27%;
+		float: left;
+		text-align: right;
+	}
+	.contactBottom {
+		text-align: center;
+		margin-top: 100px;
+		padding: 30px;
+		background: url(../../img/bgTransparent.png);
+		color: $white;
+	}
+	.contactBottom a {
+		color: $white;
+	}
+}
+
+.formContact {
+	label{
+		padding-bottom: 5px;
+		display: block;
+	}
+	.formField {
+		padding-bottom: 10px;
+	}
+	.formField input,
+	.formField textarea{
+		display: block;
+		padding: 3px;
+		border: 1px solid #CCC;
+		width: 100%;
+	}
+	input.formSubmit{
+		margin-top:5px;
+		padding: 10px 20px;
+		background: $colorAccent;
+		color: $white;
+		border: 0px;
+		cursor: pointer;
+		font-weight: bold;
+		font-size: $fontSizeNormal;
+	}
+	.error {
+		display: block;
+		color:#E52D2C;
+	}
+}
+
+.sites {
+	padding-top: 50px;
+	@include clearer();
+	.site {
+		width:33.33%;
+		float: left;
+		cursor: pointer;
+	}
+	.siteIns {
+		margin: 20px;
+		position: relative;
+		text-align: center;
+	}
+	.siteImage {
+		height: 250px;
+		background-size: cover;
+		background-position: center center;
+		background-repeat: no-repeat;
+	}
+	.siteText {
+		position: absolute;
+		background: url(../../img/bgDark.png);
+		top:0px;
+		left:0px;
+		right: 0px;
+		bottom: 0px;
+		padding: 20px;
+	}
+	.site h3 {
+		font-family: $fontFamilyAlt;
+		font-size: $fontSizeBig;
+		text-transform: uppercase;
+		padding: 10px;
+		margin-bottom: 10px;
+		background: url(../../img/bgDark.png);
+	}
+	.site p{
+		padding: 0px;
+	}
+}
+
+.team {
+	max-width: $sizeDesktop;
+	padding-left: 20px;
+	padding-right: 20px;
+	margin: auto;
+	text-align: center;
+	color: darken($colorAccent, 10%);
+	@include clearer();
+	.teamLeft {
+		width: 40%;
+		float: left;
+		margin-top: 30px;
+	}
+	.teamRight {
+		margin-top: 30px;
+		width: 40%;
+		float: right;
+		padding-left: 10%;
+		border-left: 1px solid $white;
+	}
+	.teamLeft p,
+	.teamRight p {
+		padding-top: 20px;
+	}
+	h2 {
+		font-weight: bold;
+		font-size: $fontSizeBig;
+		color: darken($colorAccent, 5%);
+	}
+	a {
+		color: $colorAccent;
+		font-weight: normal;
+		text-decoration: underline;
+	}
+	img {
+		margin-bottom: 20px;
+	}
+}
+
+@import "_public_responsive.scss";

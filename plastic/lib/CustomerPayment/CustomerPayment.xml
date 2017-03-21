@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+* @structure CustomerPayment
+*
+* @author Leano Martinet <info@asterion-cms.com>
+* @package Asterion
+* @version 3.0.1
+-->
+<object>
+    <name>CustomerPayment</name>
+    <info>
+        <sql>
+            <primary>idCustomerPayment</primary>
+            <created>true</created>
+            <modified>true</modified>
+        </sql>
+        <form>
+            <hiddenAdminMenu>true</hiddenAdminMenu>
+        </form>
+    </info>
+    <attributes>
+        <attribute>
+            <name>idCustomerPayment</name>
+            <type>id-autoincrement</type>
+        </attribute>
+        <attribute>
+            <name>idCustomer</name>
+            <type>linkid-autoincrement</type>
+        </attribute>
+        <attribute>
+            <name>amount</name>
+            <label>amount</label>
+            <type>text</type>
+        </attribute>
+        <attribute>
+            <name>payDate</name>
+            <label>payDate</label>
+            <type>date-complete</type>
+        </attribute>
+        <attribute>
+            <name>payed</name>
+            <label>payed</label>
+            <type>checkbox</type>
+        </attribute>
+    </attributes>
+</object>
